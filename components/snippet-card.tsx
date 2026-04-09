@@ -22,6 +22,8 @@ import markdown from 'highlight.js/lib/languages/markdown'
 import yaml from 'highlight.js/lib/languages/yaml'
 import dockerfile from 'highlight.js/lib/languages/dockerfile'
 
+import { StylizedText } from './stylized-text'
+
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
@@ -97,21 +99,21 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
     <div className="group relative flex flex-col rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-gray-300 hover:shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:border-zinc-600">
       {/* Language badge */}
       {snippet.language && (
-        <span className="absolute right-3 top-3 rounded-full bg-blue-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-blue-500">
+        <span className="absolute right-3 top-3 rounded-full bg-brand-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-brand-500">
           {snippet.language}
         </span>
       )}
 
       {/* Title */}
       <div className="mb-2 flex items-center gap-1.5 pr-16">
-        <h3 className="text-sm font-semibold truncate">{snippet.title}</h3>
+        <h3 className="text-[14px] font-medium leading-[23.8px] truncate"><StylizedText>{snippet.title}</StylizedText></h3>
         {snippet.url && (
           <a
             href={snippet.url}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="shrink-0 text-blue-500 hover:text-blue-400"
+            className="shrink-0 text-brand-500 hover:text-brand-200"
           >
             <ExternalLink size={13} />
           </a>
@@ -130,12 +132,12 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
             </code>
           </pre>
         ) : (
-          <p className="mb-4 flex-1 text-xs leading-relaxed text-gray-500 dark:text-zinc-400 line-clamp-3">
+          <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400 line-clamp-3">
             {snippet.content}
           </p>
         )
       ) : (
-        <p className="mb-4 flex-1 text-xs leading-relaxed text-gray-400 dark:text-zinc-500 italic line-clamp-3">
+        <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-gray-400 dark:text-zinc-500 italic line-clamp-3">
           No content
         </p>
       )}

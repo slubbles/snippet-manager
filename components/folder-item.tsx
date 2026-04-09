@@ -41,9 +41,9 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
 
   return (
     <div
-      className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-sm cursor-pointer transition-colors ${
+      className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] cursor-pointer transition-colors ${
         selected
-          ? 'bg-blue-500/10 text-blue-500 border-l-2 border-blue-500'
+          ? 'bg-brand-500/10 text-brand-500 border-l-2 border-brand-500'
           : 'text-gray-600 hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800'
       }`}
       onClick={() => !editing && onSelect()}
@@ -63,7 +63,7 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
               setEditing(false)
             }
           }}
-          className="flex-1 min-w-0 bg-transparent outline-none text-sm"
+          className="flex-1 min-w-0 bg-transparent outline-none text-[14px] leading-[23.8px]"
           onClick={(e) => e.stopPropagation()}
         />
       ) : (
@@ -93,7 +93,7 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
         </div>
       )}
 
-      <span className="ml-auto text-xs text-gray-400 dark:text-zinc-500 tabular-nums">
+      <span className="ml-auto text-[12px] text-gray-400 dark:text-zinc-500 tabular-nums">
         {folder._count.snippets}
       </span>
     </div>

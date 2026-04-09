@@ -5,6 +5,7 @@ import { signIn, signUp } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Code2, Eye, EyeOff } from 'lucide-react'
+import { StylizedText } from '@/components/stylized-text'
 
 export default function LoginPage() {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
@@ -64,18 +65,18 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500">
               <Code2 size={22} className="text-white" />
             </div>
-            <span className="text-xl font-bold">SnippetVault</span>
+            <span className="text-[20px] font-medium leading-[23px]">SnippetVault</span>
           </Link>
-          <h2 className="mt-6 text-2xl font-bold">
-            {mode === 'signin' ? 'Welcome back' : 'Create your account'}
+          <h2 className="mt-6 text-[28px] font-medium leading-[29.4px]">
+            <StylizedText>{mode === 'signin' ? 'Welcome back' : 'Create your account'}</StylizedText>
           </h2>
-          <p className="mt-2 text-sm text-gray-500 dark:text-zinc-400">
-            {mode === 'signin'
+          <p className="mt-2 text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
+            <StylizedText>{mode === 'signin'
               ? 'Sign in to access your snippets'
-              : 'Start organizing your knowledge'}
+              : 'Start organizing your knowledge'}</StylizedText>
           </p>
         </div>
 
@@ -83,7 +84,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === 'signup' && (
             <div>
-              <label htmlFor="name" className="mb-1 block text-sm font-medium">
+              <label htmlFor="name" className="mb-1 block text-[12px] font-semibold leading-[20.4px]">
                 Name
               </label>
               <input
@@ -91,14 +92,14 @@ export default function LoginPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-blue-500"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-brand-500"
                 placeholder="Your name"
                 autoComplete="name"
               />
             </div>
           )}
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm font-medium">
+            <label htmlFor="email" className="mb-1 block text-[12px] font-semibold leading-[20.4px]">
               Email
             </label>
             <input
@@ -106,14 +107,14 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-blue-500"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-brand-500"
               placeholder="you@example.com"
               autoComplete="email"
               required
             />
           </div>
           <div>
-            <label htmlFor="password" className="mb-1 block text-sm font-medium">
+            <label htmlFor="password" className="mb-1 block text-[12px] font-semibold leading-[20.4px]">
               Password
             </label>
             <div className="relative">
@@ -122,7 +123,7 @@ export default function LoginPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 pr-10 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-blue-500"
+                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 pr-10 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-brand-500"
                 placeholder="Min 8 characters"
                 autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
                 required
@@ -140,7 +141,7 @@ export default function LoginPage() {
 
           {/* Error */}
           {error && (
-            <div className="rounded-lg bg-red-500/10 px-3 py-2 text-sm text-red-500">
+            <div className="rounded-lg bg-red-500/10 px-3 py-2 text-[14px] leading-[23.8px] text-red-500">
               {error}
             </div>
           )}
@@ -149,7 +150,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-blue-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-lg bg-brand-500 px-4 py-2.5 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading
               ? 'Please wait...'
@@ -160,13 +161,13 @@ export default function LoginPage() {
         </form>
 
         {/* Toggle mode */}
-        <p className="text-center text-sm text-gray-500 dark:text-zinc-400">
+        <p className="text-center text-[14px] leading-[23.8px] text-gray-500 dark:text-zinc-400">
           {mode === 'signin' ? (
             <>
               Don&apos;t have an account?{' '}
               <button
                 onClick={() => { setMode('signup'); setError('') }}
-                className="font-medium text-blue-500 hover:text-blue-400"
+                className="font-medium text-brand-500 hover:text-brand-200"
               >
                 Sign up
               </button>
@@ -176,7 +177,7 @@ export default function LoginPage() {
               Already have an account?{' '}
               <button
                 onClick={() => { setMode('signin'); setError('') }}
-                className="font-medium text-blue-500 hover:text-blue-400"
+                className="font-medium text-brand-500 hover:text-brand-200"
               >
                 Sign in
               </button>

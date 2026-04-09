@@ -2,6 +2,7 @@
 
 import { Plus, FileText } from 'lucide-react'
 import { SnippetCard } from './snippet-card'
+import { StylizedText } from './stylized-text'
 
 interface Snippet {
   id: string
@@ -49,16 +50,16 @@ export function SnippetGrid({
       {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-semibold">
-            {searchQuery ? `Results for "${searchQuery}"` : folderName}
+          <h2 className="text-[20px] font-medium leading-[23px]">
+            <StylizedText>{searchQuery ? `Results for "${searchQuery}"` : folderName}</StylizedText>
           </h2>
-          <p className="text-sm text-gray-500 dark:text-zinc-400">
+          <p className="text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
             {snippets.length} snippet{snippets.length !== 1 ? 's' : ''}
           </p>
         </div>
         <button
           onClick={onNewSnippet}
-          className="flex items-center gap-1.5 rounded-lg bg-blue-500 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-600"
+          className="flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-2 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700"
         >
           <Plus size={16} />
           New Snippet
@@ -78,10 +79,10 @@ export function SnippetGrid({
       {!loading && snippets.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 text-center">
           <FileText size={48} className="mb-4 text-gray-300 dark:text-zinc-600" />
-          <h3 className="mb-1 text-sm font-medium text-gray-500 dark:text-zinc-400">
+          <h3 className="mb-1 text-[14px] font-medium leading-[23.8px] text-gray-500 dark:text-zinc-400">
             {searchQuery ? 'No snippets match your search' : 'No snippets yet'}
           </h3>
-          <p className="text-sm text-gray-400 dark:text-zinc-500">
+          <p className="text-[14px] font-normal leading-[23.8px] text-gray-400 dark:text-zinc-500">
             {searchQuery
               ? 'Try a different search term'
               : 'Create your first snippet to get started'}

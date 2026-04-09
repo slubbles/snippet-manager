@@ -40,3 +40,45 @@
 ### Blockers / Next Steps
 - None — all challenge requirements met
 - Future nice-to-haves: syntax highlighting, drag-and-drop reorder, export/import
+
+---
+
+## Session: 2025-07-25 (SaaS Conversion)
+
+**ROADMAP-v2 Completion: ~80%** (8/10 phases done)
+
+### Phase Status (ROADMAP-v2)
+- Phase 1 — File Cleanup: ✅ Done
+- Phase 2 — BetterAuth Setup: ✅ Done
+- Phase 3 — Auth Middleware: ✅ Done
+- Phase 4 — Login Page: ✅ Done
+- Phase 5 — Dashboard Move + API Scoping: ✅ Done
+- Phase 6 — Landing Page: ✅ Done
+- Phase 7 — Profile Page: ✅ Done
+- Phase 8 — Settings Page: ✅ Done
+- Phase 9 — Shared Layout for Protected Pages: ⬜ Not started
+- Phase 10 — Polish + Build + Deploy: 🟡 In progress (build passes, pushed to GitHub)
+
+### Accomplished This Session
+- Deleted 6 unused files (5 default SVGs + redundant favicon.ico)
+- Installed BetterAuth, configured server + client auth instances
+- Created auth-utils.ts helper (getUser, requireUser)
+- Wrote full Prisma schema with 4 BetterAuth tables (User, Session, Account, Verification)
+- Added userId to Folder + Snippet models, force-reset DB
+- Created middleware.ts for route protection
+- Updated all 3 API routes with auth checks + userId scoping
+- Created /login page (sign in/sign up with toggle)
+- Created /dashboard page (moved from root, added auth)
+- Created /profile page (user info, inline name edit, stats)
+- Created /settings page (name, password, delete account)
+- Created landing page at / (hero, features, footer)
+- Created ROADMAP-v2.md (~300 lines)
+- Build passes, committed and pushed to GitHub
+- User added UI-design/ folder with Bagoss Condensed fonts + design preference data
+
+### Blockers / Next Steps
+- Need to add BETTER_AUTH_SECRET + BETTER_AUTH_URL to Vercel env vars
+- Phase 9: shared layout for protected pages (optional)
+- Design system discussion: user has Bagoss Condensed fonts + preference data in UI-design/
+- Create designsystem.md based on user's preferences
+- Test full auth flow on deployed site

@@ -26,8 +26,16 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* SnippetVault teal palette */
+  --color-brand-900: #091413;
+  --color-brand-700: #285A48;
+  --color-brand-500: #408A71;
+  --color-brand-200: #B0E4CC;
+  --color-brand-100: #d8f3e8;
+  --color-brand-50: #eef9f3;
 }
 
 /* Custom scrollbar */
@@ -44,4 +52,10 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #52525b;
+}
+
+/* Bagoss Condensed — only for the letter G in headings */
+.bagoss-g {
+  font-family: var(--font-bagoss), sans-serif;
+  font-weight: 500;
 }

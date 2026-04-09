@@ -135,7 +135,7 @@ export function SnippetModal({
       >
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">
+          <h2 className="text-[20px] font-medium leading-[23px]">
             {isEdit ? 'Edit Snippet' : 'Create New Snippet'}
           </h2>
           <button
@@ -149,7 +149,7 @@ export function SnippetModal({
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* URL */}
           <div>
-            <label className="mb-1 block text-sm text-gray-500 dark:text-zinc-400">
+            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400">
               URL (optional)
             </label>
             <div className="relative">
@@ -159,12 +159,12 @@ export function SnippetModal({
                 onChange={(e) => setUrl(e.target.value)}
                 onBlur={() => fetchTitle(url)}
                 placeholder="https://example.com"
-                className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
+                className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
               />
               {fetchingTitle && (
                 <Loader2
                   size={14}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-blue-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-brand-500"
                 />
               )}
             </div>
@@ -172,7 +172,7 @@ export function SnippetModal({
 
           {/* Title */}
           <div>
-            <label className="mb-1 block text-sm text-gray-500 dark:text-zinc-400">
+            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400">
               Title *
             </label>
             <input
@@ -181,13 +181,13 @@ export function SnippetModal({
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Snippet title"
               required
-              className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
+              className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
             />
           </div>
 
           {/* Content */}
           <div>
-            <label className="mb-1 block text-sm text-gray-500 dark:text-zinc-400">
+            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400">
               Content
             </label>
             <textarea
@@ -195,21 +195,21 @@ export function SnippetModal({
               onChange={(e) => setContent(e.target.value)}
               placeholder="Paste your code, notes, or text here..."
               rows={6}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-sm outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
+              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 font-mono text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
             />
           </div>
 
           {/* Folder + Language */}
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-sm text-gray-500 dark:text-zinc-400">
+              <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400">
                 Folder *
               </label>
               <select
                 value={folderId}
                 onChange={(e) => setFolderId(e.target.value)}
                 required
-                className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
+                className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
               >
                 {folders.map((f) => (
                   <option key={f.id} value={f.id}>
@@ -219,13 +219,13 @@ export function SnippetModal({
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-sm text-gray-500 dark:text-zinc-400">
+              <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400">
                 Language
               </label>
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
+                className="h-10 w-full rounded-lg border border-gray-300 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50"
               >
                 {LANGUAGES.map((l) => (
                   <option key={l.value} value={l.value}>
@@ -241,14 +241,14 @@ export function SnippetModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg px-4 py-2 text-sm text-gray-500 transition-colors hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+              className="rounded-lg px-4 py-2 text-[14px] leading-[23.8px] text-gray-500 transition-colors hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={!title.trim() || !folderId}
-              className="rounded-lg bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-lg bg-brand-500 px-4 py-2 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isEdit ? 'Update' : 'Save'}
             </button>

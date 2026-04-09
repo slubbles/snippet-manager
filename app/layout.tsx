@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const bagossCondensed = localFont({
+  src: "../public/fonts/BagossCondensedTRIAL-Medium.woff2",
+  variable: "--font-bagoss",
+  weight: "500",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,10 +41,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${bagossCondensed.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="h-full bg-gray-50 text-gray-900 dark:bg-zinc-950 dark:text-zinc-50">
+      <body className="h-full bg-white font-[family-name:var(--font-inter)] text-gray-900 dark:bg-[#091413] dark:text-zinc-50">
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
           {children}
           <Toaster richColors position="bottom-right" />

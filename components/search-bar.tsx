@@ -22,7 +22,7 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           placeholder="Search snippets..."
           value={query}
           onChange={(e) => onChange(e.target.value)}
-          className="h-9 w-full rounded-lg border border-gray-300 bg-white pl-9 pr-14 text-sm text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:border-blue-500"
+          className="h-9 w-full rounded-lg border border-gray-300 bg-white pl-9 pr-14 text-[14px] leading-[23.8px] text-gray-900 placeholder-gray-400 outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-50 dark:placeholder-zinc-500 dark:focus:border-brand-500"
         />
         {query ? (
           <button
