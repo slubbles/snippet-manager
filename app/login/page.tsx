@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { signIn, signUp } from '@/lib/auth-client'
@@ -71,7 +71,7 @@ export default function LoginPage() {
           <h2 className="mt-6 text-[28px] font-medium leading-[29.4px]">
             {mode === 'signin' ? 'Welcome back' : 'Create your account'}
           </h2>
-          <p className="mt-2 text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
+          <p className="mt-2 text-[14px] font-normal leading-[23.8px] text-[#091413]/60 dark:text-white/60">
             {mode === 'signin'
               ? 'Sign in to access your snippets'
               : 'Start organizing your knowledge'}
@@ -90,7 +90,7 @@ export default function LoginPage() {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-brand-500"
+                className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-brand-500"
                 placeholder="Your name"
                 autoComplete="name"
               />
@@ -105,7 +105,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-brand-500"
+              className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-brand-500"
               placeholder="you@example.com"
               autoComplete="email"
               required
@@ -121,7 +121,7 @@ export default function LoginPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 pr-10 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:focus:border-brand-500"
+                className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 pr-10 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-brand-500"
                 placeholder="Min 8 characters"
                 autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
                 required
@@ -130,7 +130,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-gray-400 hover:text-gray-600 dark:text-zinc-500 dark:hover:text-zinc-300"
+                className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[#091413]/40 hover:text-[#091413]/70 dark:text-white/40 dark:hover:text-white/70"
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
@@ -159,7 +159,7 @@ export default function LoginPage() {
         </form>
 
         {/* Toggle mode */}
-        <p className="text-center text-[14px] leading-[23.8px] text-gray-500 dark:text-zinc-400">
+        <p className="text-center text-[14px] leading-[23.8px] text-[#091413]/60 dark:text-white/60">
           {mode === 'signin' ? (
             <>
               Don&apos;t have an account?{' '}

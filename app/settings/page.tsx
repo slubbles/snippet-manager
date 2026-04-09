@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { useSession, authClient, signOut } from '@/lib/auth-client'
@@ -98,7 +98,7 @@ export default function SettingsPage() {
     <div className="mx-auto max-w-2xl px-4 py-10">
       <Link
         href="/dashboard"
-        className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[23.8px] text-gray-500 hover:text-gray-700 dark:text-zinc-400 dark:hover:text-zinc-200"
+        className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
       >
         <ArrowLeft size={16} />
         Back to Dashboard
@@ -107,14 +107,14 @@ export default function SettingsPage() {
       <h1 className="mb-8 text-[28px] font-medium leading-[29.4px]">Settings</h1>
 
       {/* Update Name */}
-      <section className="mb-8 rounded-xl border border-gray-200 p-6 dark:border-zinc-700/50">
+      <section className="mb-8 rounded-xl border border-[#091413]/10 p-6 dark:border-white/10">
         <h2 className="mb-4 text-[20px] font-medium leading-[23px]">Display Name</h2>
         <form onSubmit={handleUpdateName} className="flex items-end gap-3">
           <div className="flex-1">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+              className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
               placeholder="Your name"
             />
           </div>
@@ -129,7 +129,7 @@ export default function SettingsPage() {
       </section>
 
       {/* Change Password */}
-      <section className="mb-8 rounded-xl border border-gray-200 p-6 dark:border-zinc-700/50">
+      <section className="mb-8 rounded-xl border border-[#091413]/10 p-6 dark:border-white/10">
         <h2 className="mb-4 text-[20px] font-medium leading-[23px]">Change Password</h2>
         <form onSubmit={handleChangePassword} className="space-y-3">
           <input
@@ -137,7 +137,7 @@ export default function SettingsPage() {
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             placeholder="Current password"
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+            className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
             required
             autoComplete="current-password"
           />
@@ -146,7 +146,7 @@ export default function SettingsPage() {
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             placeholder="New password (min 8 characters)"
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+            className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
             required
             minLength={8}
             autoComplete="new-password"
@@ -156,7 +156,7 @@ export default function SettingsPage() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder="Confirm new password"
-            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+            className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2 text-[14px] leading-[23.8px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
             required
             minLength={8}
             autoComplete="new-password"
@@ -174,7 +174,7 @@ export default function SettingsPage() {
       {/* Danger Zone */}
       <section className="rounded-xl border border-red-500/30 p-6">
         <h2 className="mb-2 text-[20px] font-medium leading-[23px] text-red-500">Danger Zone</h2>
-        <p className="mb-4 text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
+        <p className="mb-4 text-[14px] font-normal leading-[23.8px] text-[#091413]/60 dark:text-white/60">
           Permanently delete your account and all your data. This action cannot be undone.
         </p>
         {deleteConfirm ? (
@@ -189,7 +189,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setDeleteConfirm(false)}
-              className="rounded-lg border border-gray-300 px-4 py-2 text-[14px] font-medium leading-[23.8px] hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+              className="rounded-lg border border-[#091413]/15 px-4 py-2 text-[14px] font-medium leading-[23.8px] hover:bg-[#091413]/5 dark:border-white/15 dark:hover:bg-white/5"
             >
               Cancel
             </button>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import { X, Pencil, Check, Folder, FileCode2, Calendar, ChevronRight } from 'lucide-react'
@@ -117,20 +117,20 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
 
       {/* Panel */}
       <div
-        className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col border-l border-gray-200 bg-white shadow-2xl transition-transform duration-300 dark:border-zinc-800 dark:bg-zinc-900 ${
+        className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col border-l border-[#091413]/10 bg-white shadow-2xl transition-transform duration-300 dark:border-white/10 dark:bg-[#091413] ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-gray-200 px-5 py-4 dark:border-zinc-800">
+        <div className="flex items-center justify-between border-b border-[#091413]/10 px-5 py-4 dark:border-white/10">
           <h2 className="text-[16px] font-semibold">
             {section === 'main' ? 'Profile' : section === 'password' ? 'Change Password' : 'Delete Account'}
           </h2>
           <button
             onClick={section === 'main' ? onClose : () => setSection('main')}
-            className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+            className="rounded-lg p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5 dark:hover:text-white/70"
           >
-            {section === 'main' ? <X size={18} /> : <span className="text-[13px]">← Back</span>}
+            {section === 'main' ? <X size={18} /> : <span className="text-[13px]">â† Back</span>}
           </button>
         </div>
 
@@ -148,7 +148,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                       <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="min-w-0 flex-1 rounded-lg border border-gray-300 bg-white px-2.5 py-1 text-[14px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+                        className="min-w-0 flex-1 rounded-lg border border-[#091413]/15 bg-white px-2.5 py-1 text-[14px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
                         autoFocus
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') handleSaveName()
@@ -162,31 +162,31 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                   ) : (
                     <div className="flex items-center gap-1.5">
                       <h3 className="truncate text-[16px] font-semibold">{session.user.name}</h3>
-                      <button onClick={() => setEditingName(true)} className="shrink-0 rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-zinc-800">
+                      <button onClick={() => setEditingName(true)} className="shrink-0 rounded p-1 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5">
                         <Pencil size={13} />
                       </button>
                     </div>
                   )}
-                  <p className="truncate text-[13px] text-gray-500 dark:text-zinc-400">{session.user.email}</p>
+                  <p className="truncate text-[13px] text-[#091413]/60 dark:text-white/60">{session.user.email}</p>
                 </div>
               </div>
 
               {/* Stats */}
               <div className="mb-6 grid grid-cols-3 gap-3">
-                <div className="rounded-xl border border-gray-200 p-3 dark:border-zinc-700/50">
+                <div className="rounded-xl border border-[#091413]/10 p-3 dark:border-white/10">
                   <Folder size={16} className="mb-1.5 text-brand-500" />
                   <p className="text-[18px] font-medium">{stats.folders}</p>
-                  <p className="text-[11px] text-gray-400 dark:text-zinc-500">Folders</p>
+                  <p className="text-[11px] text-[#091413]/40 dark:text-white/40">Folders</p>
                 </div>
-                <div className="rounded-xl border border-gray-200 p-3 dark:border-zinc-700/50">
+                <div className="rounded-xl border border-[#091413]/10 p-3 dark:border-white/10">
                   <FileCode2 size={16} className="mb-1.5 text-brand-500" />
                   <p className="text-[18px] font-medium">{stats.snippets}</p>
-                  <p className="text-[11px] text-gray-400 dark:text-zinc-500">Snippets</p>
+                  <p className="text-[11px] text-[#091413]/40 dark:text-white/40">Snippets</p>
                 </div>
-                <div className="rounded-xl border border-gray-200 p-3 dark:border-zinc-700/50">
+                <div className="rounded-xl border border-[#091413]/10 p-3 dark:border-white/10">
                   <Calendar size={16} className="mb-1.5 text-brand-500" />
                   <p className="text-[12px] font-medium leading-tight">{memberSince}</p>
-                  <p className="text-[11px] text-gray-400 dark:text-zinc-500">Joined</p>
+                  <p className="text-[11px] text-[#091413]/40 dark:text-white/40">Joined</p>
                 </div>
               </div>
 
@@ -194,10 +194,10 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
               <div className="space-y-1">
                 <button
                   onClick={() => setSection('password')}
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-[14px] text-gray-700 hover:bg-gray-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-[14px] text-[#091413]/80 hover:bg-[#091413]/5 dark:text-white/70 dark:hover:bg-white/5"
                 >
                   Change Password
-                  <ChevronRight size={16} className="text-gray-400" />
+                  <ChevronRight size={16} className="text-[#091413]/40" />
                 </button>
                 <button
                   onClick={() => setSection('danger')}
@@ -217,7 +217,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder="Current password"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+                className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
                 required
                 autoComplete="current-password"
               />
@@ -226,7 +226,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="New password (min 8 characters)"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+                className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
                 required
                 minLength={8}
                 autoComplete="new-password"
@@ -236,7 +236,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="Confirm new password"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-[14px] outline-none focus:border-brand-500 dark:border-zinc-700 dark:bg-zinc-800"
+                className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] outline-none focus:border-brand-500 dark:border-white/15 dark:bg-white/5"
                 required
                 minLength={8}
                 autoComplete="new-password"
@@ -253,7 +253,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
 
           {section === 'danger' && (
             <div>
-              <p className="mb-4 text-[14px] text-gray-500 dark:text-zinc-400">
+              <p className="mb-4 text-[14px] text-[#091413]/60 dark:text-white/60">
                 Permanently delete your account and all your data. This action cannot be undone.
               </p>
               {deleteConfirm ? (
@@ -267,7 +267,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                   </button>
                   <button
                     onClick={() => setDeleteConfirm(false)}
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-[14px] font-medium hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-800"
+                    className="w-full rounded-lg border border-[#091413]/15 px-4 py-2.5 text-[14px] font-medium hover:bg-[#091413]/5 dark:border-white/15 dark:hover:bg-white/5"
                   >
                     Cancel
                   </button>

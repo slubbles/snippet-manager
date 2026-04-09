@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useRef } from 'react'
 import { ExternalLink, Pencil, Copy, Trash2 } from 'lucide-react'
@@ -79,7 +79,7 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
       try {
         hljs.highlightElement(codeRef.current)
       } catch {
-        // language not registered — leave as plain text
+        // language not registered â€” leave as plain text
       }
     }
   }, [snippet.content, snippet.language])
@@ -94,7 +94,7 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
   }
 
   return (
-    <div className="group relative flex flex-col rounded-xl border border-gray-200 bg-white p-4 transition-all hover:border-gray-300 hover:shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/50 dark:hover:border-zinc-600">
+    <div className="group relative flex flex-col rounded-xl border border-[#091413]/10 bg-white p-4 transition-all hover:border-[#091413]/15 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/15">
       {/* Language badge */}
       {snippet.language && (
         <span className="absolute right-3 top-3 rounded-full bg-brand-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-brand-500">
@@ -121,7 +121,7 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
       {/* Content preview */}
       {snippet.content ? (
         snippet.language ? (
-          <pre className="mb-4 flex-1 overflow-hidden rounded-md bg-gray-50 p-2 text-[11px] leading-relaxed dark:bg-zinc-900/60">
+          <pre className="mb-4 flex-1 overflow-hidden rounded-md bg-[#091413]/[0.03] p-2 text-[11px] leading-relaxed dark:bg-[#091413]/60">
             <code
               ref={codeRef}
               className={`language-${snippet.language} !bg-transparent line-clamp-4`}
@@ -130,31 +130,31 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
             </code>
           </pre>
         ) : (
-          <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-gray-500 dark:text-zinc-400 line-clamp-3">
+          <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60 line-clamp-3">
             {snippet.content}
           </p>
         )
       ) : (
-        <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-gray-400 dark:text-zinc-500 italic line-clamp-3">
+        <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-[#091413]/40 dark:text-white/40 italic line-clamp-3">
           No content
         </p>
       )}
 
       {/* Footer */}
       <div className="flex items-center justify-between">
-        <span className="text-[11px] text-gray-400 dark:text-zinc-500">
+        <span className="text-[11px] text-[#091413]/40 dark:text-white/40">
           {timeAgo(snippet.createdAt)}
         </span>
         <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
           <button
             onClick={onEdit}
-            className="rounded p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:text-zinc-500 dark:hover:bg-zinc-700 dark:hover:text-zinc-300"
+            className="rounded p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
           >
             <Pencil size={13} />
           </button>
           <button
             onClick={handleCopy}
-            className="rounded p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:text-zinc-500 dark:hover:bg-zinc-700 dark:hover:text-zinc-300"
+            className="rounded p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
           >
             <Copy size={13} />
           </button>

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
@@ -17,7 +17,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-50 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+      className="flex h-9 w-9 items-center justify-center rounded-lg text-[#091413]/40 transition-colors hover:bg-white/5 hover:text-white dark:hover:bg-white/5 dark:hover:text-white"
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}

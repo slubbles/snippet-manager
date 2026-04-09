@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { FolderPlus, Layers } from 'lucide-react'
@@ -43,9 +43,9 @@ export function Sidebar({
   }
 
   return (
-    <aside className="flex h-full w-72 flex-col border-r border-gray-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+    <aside className="flex h-full w-72 flex-col border-r border-[#091413]/10 bg-white dark:border-white/10 dark:bg-[#091413]">
       {/* Header */}
-      <div className="flex items-center gap-2 border-b border-gray-200 px-4 py-3 dark:border-zinc-800">
+      <div className="flex items-center gap-2 border-b border-[#091413]/10 px-4 py-3 dark:border-white/10">
         <ThemeLogo size={22} />
         <span className="text-[14px] font-semibold leading-[23.8px]">Snip Labs</span>
       </div>
@@ -57,13 +57,13 @@ export function Sidebar({
           className={`flex items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] cursor-pointer transition-colors ${
             selectedFolderId === null
               ? 'bg-brand-500/10 text-brand-500 border-l-2 border-brand-500'
-              : 'text-gray-600 hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800'
+              : 'text-[#091413]/70 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5'
           }`}
           onClick={() => onSelectFolder(null)}
         >
           <Layers size={16} className="shrink-0" />
           <span className="flex-1 truncate">All Snippets</span>
-          <span className="text-[12px] text-gray-400 dark:text-zinc-500 tabular-nums">
+          <span className="text-[12px] text-[#091413]/40 dark:text-white/40 tabular-nums">
             {totalSnippets}
           </span>
         </div>
@@ -71,14 +71,14 @@ export function Sidebar({
         {/* New Folder button */}
         <button
           onClick={() => setCreating(true)}
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] text-gray-500 transition-colors hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 transition-colors hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
         >
           <FolderPlus size={16} />
           New Folder
         </button>
 
         {/* Divider */}
-        <div className="my-2 border-t border-gray-200 dark:border-zinc-800" />
+        <div className="my-2 border-t border-[#091413]/10 dark:border-white/10" />
 
         {/* Folders */}
         {folders.map((folder) => (
@@ -111,7 +111,7 @@ export function Sidebar({
                 }
               }}
               placeholder="Folder name..."
-              className="flex-1 min-w-0 rounded bg-transparent text-[14px] leading-[23.8px] outline-none placeholder-zinc-500"
+              className="flex-1 min-w-0 rounded bg-transparent text-[14px] leading-[23.8px] outline-none placeholder-white/40"
             />
           </div>
         )}

@@ -36,7 +36,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="h-full bg-white font-[family-name:var(--font-inter)] text-gray-900 dark:bg-[#091413] dark:text-zinc-50">
+      <body className="h-full bg-white font-[family-name:var(--font-inter)] text-[#091413] dark:bg-[#091413] dark:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
           {children}
           <Toaster richColors position="bottom-right" />

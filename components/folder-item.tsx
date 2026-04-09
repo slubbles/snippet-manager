@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useRef, useEffect } from 'react'
 import { Folder, Pencil, Trash2 } from 'lucide-react'
@@ -44,7 +44,7 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
       className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] cursor-pointer transition-colors ${
         selected
           ? 'bg-brand-500/10 text-brand-500 border-l-2 border-brand-500'
-          : 'text-gray-600 hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800'
+          : 'text-[#091413]/70 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5'
       }`}
       onClick={() => !editing && onSelect()}
     >
@@ -77,7 +77,7 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
               e.stopPropagation()
               setEditing(true)
             }}
-            className="rounded p-1 hover:bg-zinc-700/50"
+            className="rounded p-1 hover:bg-white/10"
           >
             <Pencil size={12} />
           </button>
@@ -93,7 +93,7 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
         </div>
       )}
 
-      <span className="ml-auto text-[12px] text-gray-400 dark:text-zinc-500 tabular-nums">
+      <span className="ml-auto text-[12px] text-[#091413]/40 dark:text-white/40 tabular-nums">
         {folder._count.snippets}
       </span>
     </div>
