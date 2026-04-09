@@ -98,7 +98,7 @@ export default function SettingsPage() {
     <div className="mx-auto max-w-2xl px-4 py-10">
       <Link
         href="/dashboard"
-        className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
+        className="mb-8 inline-flex items-center gap-1.5 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
       >
         <ArrowLeft size={16} />
         Back to Dashboard
@@ -109,7 +109,7 @@ export default function SettingsPage() {
       {/* Update Name */}
       <section className="mb-8 rounded-xl border border-[#091413]/10 p-6 dark:border-white/10">
         <h2 className="mb-4 text-[20px] font-medium leading-[23px]">Display Name</h2>
-        <form onSubmit={handleUpdateName} className="flex items-end gap-3">
+        <form onSubmit={handleUpdateName} className="flex flex-col sm:flex-row sm:items-end gap-3">
           <div className="flex-1">
             <input
               value={name}
@@ -178,7 +178,7 @@ export default function SettingsPage() {
           Permanently delete your account and all your data. This action cannot be undone.
         </p>
         {deleteConfirm ? (
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="text-[14px] leading-[23.8px] text-red-500">Are you sure?</span>
             <button
               onClick={handleDeleteAccount}

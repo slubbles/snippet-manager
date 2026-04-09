@@ -111,9 +111,9 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="shrink-0 text-brand-500 hover:text-brand-200"
+            className="shrink-0 p-1 text-brand-500 hover:text-brand-200"
           >
-            <ExternalLink size={13} />
+            <ExternalLink size={14} />
           </a>
         )}
       </div>
@@ -145,24 +145,24 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
         <span className="text-[11px] text-[#091413]/40 dark:text-white/40">
           {timeAgo(snippet.createdAt)}
         </span>
-        <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+        <div className="flex items-center gap-1 opacity-100 md:opacity-0 transition-opacity md:group-hover:opacity-100">
           <button
             onClick={onEdit}
-            className="rounded p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
+            className="rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
           >
-            <Pencil size={13} />
+            <Pencil size={14} />
           </button>
           <button
             onClick={handleCopy}
-            className="rounded p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
+            className="rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
           >
-            <Copy size={13} />
+            <Copy size={14} />
           </button>
           <button
             onClick={onDelete}
-            className="rounded p-1.5 text-red-400 hover:bg-red-500/10 hover:text-red-500"
+            className="rounded p-2 text-red-400 hover:bg-red-500/10 hover:text-red-500"
           >
-            <Trash2 size={13} />
+            <Trash2 size={14} />
           </button>
         </div>
       </div>

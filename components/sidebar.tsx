@@ -43,7 +43,7 @@ export function Sidebar({
   }
 
   return (
-    <aside className="flex h-full w-72 flex-col border-r border-[#091413]/10 bg-white dark:border-white/10 dark:bg-[#091413]">
+    <aside className="flex h-full w-72 max-w-[85vw] flex-col border-r border-[#091413]/10 bg-white dark:border-white/10 dark:bg-[#091413]">
       {/* Header */}
       <div className="flex items-center gap-2 border-b border-[#091413]/10 px-4 py-3 dark:border-white/10">
         <ThemeLogo size={22} />
@@ -111,7 +111,7 @@ export function Sidebar({
                 }
               }}
               placeholder="Folder name..."
-              className="flex-1 min-w-0 rounded bg-transparent text-[14px] leading-[23.8px] outline-none placeholder-white/40"
+              className="flex-1 min-w-0 rounded bg-transparent text-[14px] leading-[23.8px] outline-none placeholder-[#091413]/40 dark:placeholder-white/40"
             />
           </div>
         )}

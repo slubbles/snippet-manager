@@ -38,7 +38,7 @@ export default function LandingPage() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-[#091413]/70 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/10 sm:hidden transition-colors"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-[#091413]/70 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/10 sm:hidden transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -96,7 +96,7 @@ export default function LandingPage() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <Image
               src="/images/hero-section.webp"
               alt="Organize your code snippets"
@@ -251,7 +251,7 @@ function BenefitsCarousel() {
       {cards.map((card, i) => (
         <div
           key={`${card.icon}-${i}`}
-          className="group w-[320px] shrink-0 rounded-[20px] border border-[#091413]/10 bg-white p-6 transition-all hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/30"
+          className="group w-[280px] sm:w-[320px] shrink-0 rounded-[20px] border border-[#091413]/10 bg-white p-6 transition-all hover:border-brand-500/30 hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-brand-500/30"
         >
           <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500/10 text-brand-500 transition-colors group-hover:bg-brand-500/15 dark:bg-brand-500/15 dark:group-hover:bg-brand-500/25">
             {iconMap[card.icon]}

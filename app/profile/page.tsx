@@ -74,7 +74,7 @@ export default function ProfilePage() {
       {/* Back link */}
       <Link
         href="/dashboard"
-        className="mb-8 inline-flex items-center gap-1.5 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
+        className="mb-8 inline-flex items-center gap-1.5 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
       >
         <ArrowLeft size={16} />
         Back to Dashboard
@@ -100,17 +100,17 @@ export default function ProfilePage() {
                   if (e.key === 'Escape') { setEditingName(false); setName(session.user.name) }
                 }}
               />
-              <button onClick={handleSaveName} className="rounded p-1 text-green-500 hover:bg-green-500/10">
+              <button onClick={handleSaveName} className="rounded p-2 text-green-500 hover:bg-green-500/10">
                 <Check size={16} />
               </button>
-              <button onClick={() => { setEditingName(false); setName(session.user.name) }} className="rounded p-1 text-[#091413]/40 hover:bg-[#091413]/5 dark:hover:bg-white/5">
+              <button onClick={() => { setEditingName(false); setName(session.user.name) }} className="rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 dark:hover:bg-white/5">
                 <X size={16} />
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-2">
               <h2 className="text-[18px] font-semibold leading-[27px]">{session.user.name}</h2>
-              <button onClick={() => setEditingName(true)} className="rounded p-1 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5 dark:hover:text-white/70">
+              <button onClick={() => setEditingName(true)} className="rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5 dark:hover:text-white/70">
                 <Pencil size={14} />
               </button>
             </div>
@@ -120,7 +120,7 @@ export default function ProfilePage() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         <div className="rounded-xl border border-[#091413]/10 p-4 dark:border-white/10">
           <Folder size={20} className="mb-2 text-brand-500" />
           <p className="text-[20px] font-medium leading-[23px]">{stats.folders}</p>

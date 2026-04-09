@@ -71,24 +71,24 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
       )}
 
       {!editing && (
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
           <button
             onClick={(e) => {
               e.stopPropagation()
               setEditing(true)
             }}
-            className="rounded p-1 hover:bg-white/10"
+            className="rounded p-1.5 hover:bg-white/10"
           >
-            <Pencil size={12} />
+            <Pencil size={14} />
           </button>
           <button
             onClick={(e) => {
               e.stopPropagation()
               onDelete()
             }}
-            className="rounded p-1 text-red-400 hover:bg-red-500/10"
+            className="rounded p-1.5 text-red-400 hover:bg-red-500/10"
           >
-            <Trash2 size={12} />
+            <Trash2 size={14} />
           </button>
         </div>
       )}

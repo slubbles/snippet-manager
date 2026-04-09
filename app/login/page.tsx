@@ -63,7 +63,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-full bg-white dark:bg-[#091413]">
       {/* Left column — Form */}
-      <div className="flex w-full flex-col justify-center px-6 py-12 lg:w-1/2 lg:px-16 xl:px-24">
+      <div className="flex w-full flex-col justify-center px-6 py-6 sm:py-12 lg:w-1/2 lg:px-16 xl:px-24">
         <div className="mx-auto w-full max-w-sm space-y-8">
           {/* Logo + back link */}
           <div>

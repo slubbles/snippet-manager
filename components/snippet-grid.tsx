@@ -45,11 +45,11 @@ export function SnippetGrid({
   onDelete,
 }: SnippetGridProps) {
   return (
-    <div className="flex-1 overflow-y-auto p-6">
+    <div className="flex-1 overflow-y-auto p-4 sm:p-6">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h2 className="text-[20px] font-medium leading-[23px]">
+      <div className="mb-6 flex items-center justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <h2 className="truncate text-[20px] font-medium leading-[23px]">
             {searchQuery ? `Results for "${searchQuery}"` : folderName}
           </h2>
           <p className="text-[14px] font-normal leading-[23.8px] text-[#091413]/60 dark:text-white/60">

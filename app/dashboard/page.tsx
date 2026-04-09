@@ -167,7 +167,7 @@ export default function DashboardPage() {
         <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-[#091413]/10 bg-white/80 px-4 py-2.5 backdrop-blur dark:border-white/10 dark:bg-[#091413]/80">
           <button
             onClick={() => setMobileSidebarOpen(true)}
-            className="rounded-lg p-1.5 text-[#091413]/60 hover:bg-[#091413]/5 md:hidden dark:text-white/60 dark:hover:bg-white/5"
+            className="rounded-lg p-2 text-[#091413]/60 hover:bg-[#091413]/5 md:hidden dark:text-white/60 dark:hover:bg-white/5"
           >
             <Menu size={20} />
           </button>

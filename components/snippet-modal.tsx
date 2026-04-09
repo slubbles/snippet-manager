@@ -130,7 +130,7 @@ export function SnippetModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl rounded-2xl border border-[#091413]/10 bg-white p-6 shadow-xl dark:border-white/15 dark:bg-[#091413]"
+        className="w-full max-w-2xl rounded-2xl border border-[#091413]/10 bg-white p-4 sm:p-6 shadow-xl dark:border-white/15 dark:bg-[#091413]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -140,7 +140,7 @@ export function SnippetModal({
           </h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 dark:hover:bg-white/5"
+            className="rounded-lg p-2 text-[#091413]/40 hover:bg-[#091413]/5 dark:hover:bg-white/5"
           >
             <X size={18} />
           </button>
@@ -200,7 +200,7 @@ export function SnippetModal({
           </div>
 
           {/* Folder + Language */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60">
                 Folder *
@@ -241,14 +241,14 @@ export function SnippetModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg px-4 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 transition-colors hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
+              className="rounded-lg px-4 py-2.5 text-[14px] leading-[23.8px] text-[#091413]/60 transition-colors hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={!title.trim() || !folderId}
-              className="rounded-lg bg-brand-500 px-4 py-2 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-lg bg-brand-500 px-4 py-2.5 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isEdit ? 'Update' : 'Save'}
             </button>

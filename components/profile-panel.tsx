@@ -128,7 +128,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
           </h2>
           <button
             onClick={section === 'main' ? onClose : () => setSection('main')}
-            className="rounded-lg p-1.5 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5 dark:hover:text-white/70"
+            className="rounded-lg p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5 dark:hover:text-white/70"
           >
             {section === 'main' ? <X size={18} /> : <span className="text-[13px]">â† Back</span>}
           </button>
@@ -162,8 +162,8 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
                   ) : (
                     <div className="flex items-center gap-1.5">
                       <h3 className="truncate text-[16px] font-semibold">{session.user.name}</h3>
-                      <button onClick={() => setEditingName(true)} className="shrink-0 rounded p-1 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5">
-                        <Pencil size={13} />
+                      <button onClick={() => setEditingName(true)} className="shrink-0 rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:hover:bg-white/5">
+                        <Pencil size={14} />
                       </button>
                     </div>
                   )}
@@ -172,7 +172,7 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
               </div>
 
               {/* Stats */}
-              <div className="mb-6 grid grid-cols-3 gap-3">
+              <div className="mb-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
                 <div className="rounded-xl border border-[#091413]/10 p-3 dark:border-white/10">
                   <Folder size={16} className="mb-1.5 text-brand-500" />
                   <p className="text-[18px] font-medium">{stats.folders}</p>
@@ -194,14 +194,14 @@ export function ProfilePanel({ open, onClose }: ProfilePanelProps) {
               <div className="space-y-1">
                 <button
                   onClick={() => setSection('password')}
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-[14px] text-[#091413]/80 hover:bg-[#091413]/5 dark:text-white/70 dark:hover:bg-white/5"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-[14px] text-[#091413]/80 hover:bg-[#091413]/5 dark:text-white/70 dark:hover:bg-white/5"
                 >
                   Change Password
                   <ChevronRight size={16} className="text-[#091413]/40" />
                 </button>
                 <button
                   onClick={() => setSection('danger')}
-                  className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-[14px] text-red-500 hover:bg-red-500/5"
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-[14px] text-red-500 hover:bg-red-500/5"
                 >
                   Delete Account
                   <ChevronRight size={16} className="text-red-400" />
