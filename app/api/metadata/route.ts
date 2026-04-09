@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import * as cheerio from 'cheerio'
+import { auth } from '@/lib/auth'
+import { headers } from 'next/headers'
 
 export async function GET(request: NextRequest) {
+  // Require auth
+  const session = await auth.api.getSession({ headers: await headers() })
+  if (!session) {
+    return NextResponse.json({ title: '' })
+  }
+
   const { searchParams } = new URL(request.url)
   const url = searchParams.get('url')
 

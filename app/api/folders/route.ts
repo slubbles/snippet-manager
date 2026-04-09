@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { auth } from '@/lib/auth'
+import { headers } from 'next/headers'
+
+async function getUserId() {
+  const session = await auth.api.getSession({ headers: await headers() })
+  return session?.user?.id ?? null
+}
 
 export async function GET() {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const folders = await prisma.folder.findMany({
+      where: { userId },
       include: { _count: { select: { snippets: true } } },
       orderBy: { name: 'asc' },
     })
@@ -16,6 +27,9 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const body = await request.json()
     const name = typeof body.name === 'string' ? body.name.trim() : ''
 
@@ -26,7 +40,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const folder = await prisma.folder.create({ data: { name } })
+    const folder = await prisma.folder.create({ data: { name, userId } })
     return NextResponse.json(folder, { status: 201 })
   } catch (error) {
     console.error('Failed to create folder:', error)
@@ -36,6 +50,9 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const body = await request.json()
     const { id } = body
     const name = typeof body.name === 'string' ? body.name.trim() : ''
@@ -50,7 +67,10 @@ export async function PUT(request: NextRequest) {
       )
     }
 
-    const folder = await prisma.folder.update({ where: { id }, data: { name } })
+    const folder = await prisma.folder.update({
+      where: { id, userId },
+      data: { name },
+    })
     return NextResponse.json(folder)
   } catch (error) {
     console.error('Failed to update folder:', error)
@@ -60,6 +80,9 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const body = await request.json()
     const { id } = body
 
@@ -67,7 +90,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 })
     }
 
-    await prisma.folder.delete({ where: { id } })
+    await prisma.folder.delete({ where: { id, userId } })
     return NextResponse.json({ message: 'Folder deleted' })
   } catch (error) {
     console.error('Failed to delete folder:', error)

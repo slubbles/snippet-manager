@@ -1,12 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { auth } from '@/lib/auth'
+import { headers } from 'next/headers'
+
+async function getUserId() {
+  const session = await auth.api.getSession({ headers: await headers() })
+  return session?.user?.id ?? null
+}
 
 export async function GET(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const { searchParams } = new URL(request.url)
     const folderId = searchParams.get('folderId')
 
-    const where = folderId ? { folderId } : {}
+    const where = folderId ? { folderId, userId } : { userId }
     const snippets = await prisma.snippet.findMany({
       where,
       orderBy: { createdAt: 'desc' },
@@ -20,6 +30,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const body = await request.json()
     const title = typeof body.title === 'string' ? body.title.trim() : ''
     const content = typeof body.content === 'string' ? body.content : ''
@@ -33,6 +46,12 @@ export async function POST(request: NextRequest) {
     }
     if (!folderId) {
       return NextResponse.json({ error: 'Folder ID is required' }, { status: 400 })
+    }
+
+    // Verify folder belongs to user
+    const folder = await prisma.folder.findFirst({ where: { id: folderId, userId } })
+    if (!folder) {
+      return NextResponse.json({ error: 'Folder not found' }, { status: 404 })
     }
 
     // Validate URL format if provided
@@ -49,6 +68,7 @@ export async function POST(request: NextRequest) {
         title,
         content,
         folderId,
+        userId,
         url: url || null,
         language: language || null,
       },
@@ -62,6 +82,9 @@ export async function POST(request: NextRequest) {
 
 export async function PUT(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const body = await request.json()
     const { id } = body
     const title = typeof body.title === 'string' ? body.title.trim() : ''
@@ -85,8 +108,9 @@ export async function PUT(request: NextRequest) {
       }
     }
 
+    // Verify ownership + update in one query
     const snippet = await prisma.snippet.update({
-      where: { id },
+      where: { id, userId },
       data: {
         title,
         content: typeof body.content === 'string' ? body.content : undefined,
@@ -104,6 +128,9 @@ export async function PUT(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
+    const userId = await getUserId()
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+
     const body = await request.json()
     const { id } = body
 
@@ -111,7 +138,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 })
     }
 
-    await prisma.snippet.delete({ where: { id } })
+    await prisma.snippet.delete({ where: { id, userId } })
     return NextResponse.json({ message: 'Snippet deleted' })
   } catch (error) {
     console.error('Failed to delete snippet:', error)
