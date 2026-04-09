@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:where(.dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Force highlight.js dark theme when .dark class is present (next-themes) */
 :where(.dark) .hljs {
   background: transparent !important;

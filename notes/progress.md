@@ -82,3 +82,58 @@
 - Design system discussion: user has Bagoss Condensed fonts + preference data in UI-design/
 - Create designsystem.md based on user's preferences
 - Test full auth flow on deployed site
+
+---
+
+## Session: 2025-07-25 (Font System)
+
+**Completion: N/A (design task)**
+
+### Accomplished
+- Replaced Geist with Inter as default body font
+- Loaded Bagoss Condensed Medium as local font from `public/fonts/`
+- Created `components/stylized-text.tsx` (wraps G/g in Bagoss spans)
+- Applied font sizes from UI-design/my-preference.md across 12+ files
+- Build passes
+
+---
+
+## Session: 2025-07-25 (Landing Page Redesign + Palette)
+
+**ROADMAP-v2 Completion: ~90%**
+
+### Accomplished
+- Applied teal color palette (#091413, #285A48, #408A71, #B0E4CC) as CSS variables
+- Added brand-100 (#d8f3e8) and brand-50 (#eef9f3) extended tokens
+- Complete rewrite of `app/page.tsx`:
+  - Sticky nav with brand colors
+  - Left-aligned hero (2-col grid) with Unsplash image + floating badge
+  - Use Case section (4 cards, no header text)
+  - Why/Benefits section (6 items with persuasive copy)
+  - FAQ section (5 expandable `<details>` items)
+  - CTA section above footer
+  - Footer
+- Bulk-replaced all `blue-*` → `brand-*` across 10 component files
+- Fixed Bagoss font path from `UI-design/font/` to `public/fonts/` (Vercel compat)
+- Configured `next.config.ts` with Unsplash remote image pattern
+- Build passes, committed and pushed to GitHub
+
+---
+
+## Session: 2025-07-25 (Audit + Polish)
+
+**ROADMAP-v2 Completion: ~95%**
+
+### Accomplished
+- Full audit of all 11 component/page files — zero `blue-` classes remaining
+- Added mobile hamburger menu to landing nav (Menu/X toggle, dropdown)
+- Added `scroll-behavior: smooth` to globals.css
+- Improved light-mode text contrast (brand-700/xx → brand-900/xx for body text)
+- Build passes (0 errors, 11 routes clean)
+
+### Confidence Score: 97/100
+
+### Remaining (non-blocking)
+- Vercel deploy needs confirmation (font path fix pushed but not verified live)
+- Phase 9 (shared layout for protected pages) — optional
+- OG image for social sharing — nice-to-have

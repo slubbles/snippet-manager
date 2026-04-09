@@ -1,9 +1,14 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Code2, FolderOpen, Link2, Search, Sun, Shield, Zap, Clock, ChevronDown } from 'lucide-react'
+import { Code2, FolderOpen, Link2, Search, Sun, Shield, Zap, Clock, ChevronDown, Menu, X } from 'lucide-react'
 import { StylizedText } from '@/components/stylized-text'
 
 export default function LandingPage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <div className="flex min-h-full flex-col bg-white dark:bg-brand-900">
       {/* ─── Nav ─── */}
@@ -17,7 +22,8 @@ export default function LandingPage() {
               Snippet<span className="bagoss-g">V</span>ault
             </span>
           </Link>
-          <div className="flex items-center gap-3">
+          {/* Desktop nav */}
+          <div className="hidden items-center gap-3 sm:flex">
             <Link
               href="/login"
               className="rounded-lg px-4 py-2 text-[14px] font-medium leading-[23.8px] text-brand-700 hover:text-brand-900 dark:text-brand-200 dark:hover:text-white transition-colors"
@@ -31,7 +37,36 @@ export default function LandingPage() {
               <StylizedText>Get Started</StylizedText>
             </Link>
           </div>
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-brand-700 hover:bg-brand-100 dark:text-brand-200 dark:hover:bg-brand-700/30 sm:hidden transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
+        {/* Mobile dropdown */}
+        {mobileMenuOpen && (
+          <div className="border-t border-brand-200/30 px-5 py-4 dark:border-brand-700/30 sm:hidden">
+            <div className="flex flex-col gap-3">
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-lg px-4 py-2.5 text-[14px] font-medium text-brand-700 hover:bg-brand-50 dark:text-brand-200 dark:hover:bg-brand-700/20 transition-colors"
+              >
+                Si<span className="bagoss-g">g</span>n in
+              </Link>
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="rounded-[22px] bg-brand-500 px-5 py-3 text-center text-[14px] font-medium text-white shadow-lg shadow-brand-500/20 hover:bg-brand-700 transition-all"
+              >
+                <StylizedText>Get Started</StylizedText>
+              </Link>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* ─── Hero ─── */}
@@ -46,7 +81,7 @@ export default function LandingPage() {
             <h1 className="mb-5 text-[36px] font-semibold leading-[1.15] tracking-tight text-brand-900 dark:text-white sm:text-[44px] md:text-[52px]">
               Stop losin<span className="bagoss-g">g</span> the code that matters most
             </h1>
-            <p className="mb-8 text-[16px] font-normal leading-[26px] text-brand-700/80 dark:text-brand-200/70 sm:text-[18px] sm:leading-[28px]">
+            <p className="mb-8 text-[16px] font-normal leading-[26px] text-brand-900/70 dark:text-brand-200/70 sm:text-[18px] sm:leading-[28px]">
               SnippetVault lets you save, or<span className="bagoss-g">g</span>anize, and find code snippets, links, and notes in seconds — so you can stop searchin<span className="bagoss-g">g</span> and start buildin<span className="bagoss-g">g</span>.
             </p>
             <div className="flex flex-wrap items-center gap-4">
@@ -125,7 +160,7 @@ export default function LandingPage() {
             <h2 className="mb-4 text-[28px] font-semibold leading-[1.2] tracking-tight text-brand-900 dark:text-white sm:text-[32px]">
               Built for developers who value their time
             </h2>
-            <p className="text-[16px] font-normal leading-[26px] text-brand-700/70 dark:text-brand-200/60">
+            <p className="text-[16px] font-normal leading-[26px] text-brand-900/60 dark:text-brand-200/60">
               Not another notes app. SnippetVault is purpose-built for savin<span className="bagoss-g">g</span> and retrievin<span className="bagoss-g">g</span> the code, links, and references you actually use.
             </p>
           </div>
@@ -201,7 +236,7 @@ export default function LandingPage() {
           <h2 className="mb-4 text-[28px] font-semibold leading-[1.2] tracking-tight text-brand-900 dark:text-white sm:text-[36px]">
             Ready to stop losin<span className="bagoss-g">g</span> code?
           </h2>
-          <p className="mb-8 text-[16px] font-normal leading-[26px] text-brand-700/70 dark:text-brand-200/60 sm:text-[18px] sm:leading-[28px]">
+          <p className="mb-8 text-[16px] font-normal leading-[26px] text-brand-900/60 dark:text-brand-200/60 sm:text-[18px] sm:leading-[28px]">
             Join developers who save hours every week by keepin<span className="bagoss-g">g</span> their best snippets one search away.
           </p>
           <Link
@@ -210,7 +245,7 @@ export default function LandingPage() {
           >
             Create your free account
           </Link>
-          <p className="mt-4 text-[12px] font-normal leading-[20.4px] text-brand-700/50 dark:text-brand-200/40">
+          <p className="mt-4 text-[12px] font-normal leading-[20.4px] text-brand-900/40 dark:text-brand-200/40">
             No credit card · Free forever · Takes 10 seconds
           </p>
         </div>
@@ -225,7 +260,7 @@ export default function LandingPage() {
             </div>
             <span className="text-[14px] font-medium leading-[23.8px] text-brand-900 dark:text-white">SnippetVault</span>
           </div>
-          <p className="text-[12px] font-normal leading-[20.4px] text-brand-700/50 dark:text-brand-200/40">
+          <p className="text-[12px] font-normal leading-[20.4px] text-brand-900/40 dark:text-brand-200/40">
             Built with Next.js, Tailwind CSS, and Neon Post<span className="bagoss-g">g</span>reSQL
           </p>
         </div>
@@ -245,7 +280,7 @@ function UseCaseCard({ icon, title, description }: { icon: React.ReactNode; titl
       <h3 className="mb-2 text-[16px] font-medium leading-[24px] text-brand-900 dark:text-white">
         <StylizedText>{title}</StylizedText>
       </h3>
-      <p className="text-[14px] font-normal leading-[23.8px] text-brand-700/70 dark:text-brand-200/60">
+      <p className="text-[14px] font-normal leading-[23.8px] text-brand-900/60 dark:text-brand-200/60">
         <StylizedText>{description}</StylizedText>
       </p>
     </div>
@@ -262,7 +297,7 @@ function BenefitCard({ icon, title, description }: { icon: React.ReactNode; titl
         <h3 className="mb-1 text-[16px] font-medium leading-[24px] text-brand-900 dark:text-white">
           <StylizedText>{title}</StylizedText>
         </h3>
-        <p className="text-[14px] font-normal leading-[23.8px] text-brand-700/70 dark:text-brand-200/60">
+        <p className="text-[14px] font-normal leading-[23.8px] text-brand-900/60 dark:text-brand-200/60">
           <StylizedText>{description}</StylizedText>
         </p>
       </div>
@@ -277,7 +312,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         <StylizedText>{question}</StylizedText>
         <ChevronDown size={18} className="shrink-0 text-brand-500 transition-transform group-open:rotate-180" />
       </summary>
-      <p className="mt-3 text-[14px] font-normal leading-[23.8px] text-brand-700/70 dark:text-brand-200/60">
+      <p className="mt-3 text-[14px] font-normal leading-[23.8px] text-brand-900/60 dark:text-brand-200/60">
         <StylizedText>{answer}</StylizedText>
       </p>
     </details>
