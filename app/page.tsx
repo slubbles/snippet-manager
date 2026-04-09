@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Code2, FolderOpen, Link2, Search, Sun, Shield, Zap, Clock, ChevronDown, Menu, X } from 'lucide-react'
+import { ThemeLogo } from '@/components/theme-logo'
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -13,10 +14,8 @@ export default function LandingPage() {
       {/* â”€â”€â”€ Nav â”€â”€â”€ */}
       <nav className="sticky top-0 z-50 border-b border-gray-200/60 bg-white/80 backdrop-blur-md dark:border-zinc-800/60 dark:bg-[#091413]/80">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500">
-              <Code2 size={18} className="text-white" />
-            </div>
+          <Link href="/" className="flex items-center gap-2">
+            <ThemeLogo size={32} />
             <span className="text-[18px] font-semibold leading-[27px] text-gray-900 dark:text-white">
               Snip Labs
             </span>
@@ -98,13 +97,13 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="relative">
-            <div className="overflow-hidden rounded-[24px] border border-gray-200/50 bg-gray-50 shadow-2xl shadow-black/5 dark:border-zinc-700/40 dark:bg-zinc-800/50 dark:shadow-black/30">
+            <div>
               <Image
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=500&fit=crop&q=80"
-                alt="Code editor with organized snippets"
+                src="/images/hero-section.webp"
+                alt="Organize your code snippets"
                 width={800}
-                height={500}
-                className="w-full object-cover"
+                height={800}
+                className="w-full object-contain"
                 priority
               />
             </div>
@@ -196,9 +195,7 @@ export default function LandingPage() {
       <footer className="border-t border-gray-200/60 px-5 py-8 dark:border-zinc-800/40 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-500">
-              <Code2 size={14} className="text-white" />
-            </div>
+            <ThemeLogo size={24} />
             <span className="text-[14px] font-medium leading-[23.8px] text-gray-900 dark:text-white">Snip Labs</span>
           </div>
           <p className="text-[12px] font-normal leading-[20.4px] text-gray-400 dark:text-zinc-500">

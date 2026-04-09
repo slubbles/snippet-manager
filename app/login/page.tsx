@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { signIn, signUp } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Code2, Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react'
+import { ThemeLogo } from '@/components/theme-logo'
 
 export default function LoginPage() {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
@@ -64,9 +65,7 @@ export default function LoginPage() {
         {/* Logo */}
         <div className="text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500">
-              <Code2 size={22} className="text-white" />
-            </div>
+            <ThemeLogo size={36} />
             <span className="text-[20px] font-medium leading-[23px]">Snip Labs</span>
           </Link>
           <h2 className="mt-6 text-[28px] font-medium leading-[29.4px]">

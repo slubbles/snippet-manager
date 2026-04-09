@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { FolderPlus, Layers } from 'lucide-react'
 import { FolderItem } from './folder-item'
+import { ThemeLogo } from './theme-logo'
 
 interface FolderData {
   id: string
@@ -45,7 +46,7 @@ export function Sidebar({
     <aside className="flex h-full w-72 flex-col border-r border-gray-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
       {/* Header */}
       <div className="flex items-center gap-2 border-b border-gray-200 px-4 py-3 dark:border-zinc-800">
-        <Layers size={20} className="text-brand-500" />
+        <ThemeLogo size={22} />
         <span className="text-[14px] font-semibold leading-[23.8px]">Snip Labs</span>
       </div>
 
