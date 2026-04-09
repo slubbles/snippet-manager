@@ -137,3 +137,40 @@
 - Vercel deploy needs confirmation (font path fix pushed but not verified live)
 - Phase 9 (shared layout for protected pages) — optional
 - OG image for social sharing — nice-to-have
+
+---
+
+## Session: 2025-07-26 (UI Overhaul + Rebrand)
+
+**Completion: All 6 requested changes done**
+
+### Accomplished
+- Renamed "SnippetVault" → "Snip Labs" across all files (layout, page, sidebar, login, README)
+- Removed Bagoss Condensed font entirely (layout.tsx, globals.css)
+- Deleted `components/stylized-text.tsx` (no longer needed)
+- Removed all `<StylizedText>` wrappers across 8 files
+- Reverted teal backgrounds to black (#091413) / white — teal kept only for buttons, badges, icons
+- Moved "New Folder" button from sidebar bottom to below "All Snippets"
+- Created `components/profile-panel.tsx` — animated slide-out panel (replaces /profile page navigation)
+  - Avatar + name editing, stats grid, change password, delete account
+  - Slide animation with backdrop overlay, Escape key to close
+- Integrated ProfilePanel into dashboard (profile icon click → panel toggle)
+- Moved navbar icons (theme toggle, profile, logout) further right with `ml-auto pr-2`
+- Fixed duplicate content in page.tsx (old version was appended — removed 320 duplicate lines)
+- Updated README.md with correct branding and Vercel URL
+- Build passes (0 errors, 11 routes), committed and pushed to GitHub
+
+### Files Changed
+- `app/layout.tsx` — Removed Bagoss font, renamed metadata
+- `app/globals.css` — Removed .bagoss-g class, updated comment
+- `app/page.tsx` — Full rewrite: new colors, no StylizedText, "Snip Labs"
+- `app/dashboard/page.tsx` — Added ProfilePanel, navbar spacing
+- `app/login/page.tsx` — Removed StylizedText, renamed
+- `app/profile/page.tsx` — Removed StylizedText
+- `app/settings/page.tsx` — Removed StylizedText
+- `components/sidebar.tsx` — Renamed, moved New Folder button
+- `components/snippet-grid.tsx` — Removed StylizedText
+- `components/snippet-card.tsx` — Removed StylizedText
+- `components/profile-panel.tsx` — NEW (slide-out panel)
+- `components/stylized-text.tsx` — DELETED
+- `README.md` — Renamed, fixed URL
