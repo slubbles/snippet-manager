@@ -108,6 +108,16 @@ export async function PUT(request: NextRequest) {
       }
     }
 
+    // Verify target folder ownership if changing folder
+    if (body.folderId) {
+      const targetFolder = await prisma.folder.findFirst({
+        where: { id: body.folderId, userId },
+      })
+      if (!targetFolder) {
+        return NextResponse.json({ error: 'Folder not found' }, { status: 404 })
+      }
+    }
+
     // Verify ownership + update in one query
     const snippet = await prisma.snippet.update({
       where: { id, userId },

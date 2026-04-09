@@ -18,7 +18,26 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    new URL(url)
+    const parsed = new URL(url)
+    // Block non-HTTP protocols and internal/private addresses
+    if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+      return NextResponse.json({ title: '' })
+    }
+    const hostname = parsed.hostname
+    if (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname === '0.0.0.0' ||
+      hostname === '::1' ||
+      hostname.startsWith('10.') ||
+      hostname.startsWith('172.') ||
+      hostname.startsWith('192.168.') ||
+      hostname.startsWith('169.254.') ||
+      hostname.endsWith('.local') ||
+      hostname.endsWith('.internal')
+    ) {
+      return NextResponse.json({ title: '' })
+    }
   } catch {
     return NextResponse.json({ title: '' })
   }

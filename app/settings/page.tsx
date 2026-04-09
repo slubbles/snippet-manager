@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSession, authClient, signOut } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -26,9 +26,9 @@ export default function SettingsPage() {
   const [deleting, setDeleting] = useState(false)
 
   // Initialize name from session
-  useState(() => {
+  useEffect(() => {
     if (session?.user) setName(session.user.name)
-  })
+  }, [session])
 
   const handleUpdateName = async (e: React.FormEvent) => {
     e.preventDefault()
