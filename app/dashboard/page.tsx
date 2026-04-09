@@ -7,10 +7,10 @@ import { SnippetGrid } from '@/components/snippet-grid'
 import { SnippetModal } from '@/components/snippet-modal'
 import { SearchBar } from '@/components/search-bar'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { ProfilePanel } from '@/components/profile-panel'
 import { useFolders } from '@/hooks/use-folders'
 import { useSnippets } from '@/hooks/use-snippets'
 import { useSession, signOut } from '@/lib/auth-client'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 interface Snippet {
@@ -31,6 +31,7 @@ export default function DashboardPage() {
   const [modalOpen, setModalOpen] = useState(false)
   const [editingSnippet, setEditingSnippet] = useState<Snippet | null>(null)
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+  const [profileOpen, setProfileOpen] = useState(false)
 
   const { folders, loading: foldersLoading, createFolder, updateFolder, deleteFolder, fetchFolders } = useFolders()
   const searchActive = searchQuery.length > 0
@@ -71,6 +72,7 @@ export default function DashboardPage() {
       if (e.key === 'Escape') {
         setModalOpen(false)
         setMobileSidebarOpen(false)
+        setProfileOpen(false)
       }
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault()
@@ -170,15 +172,15 @@ export default function DashboardPage() {
             <Menu size={20} />
           </button>
           <SearchBar ref={searchRef} query={searchQuery} onChange={setSearchQuery} />
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 ml-auto pr-2">
             <ThemeToggle />
-            <Link
-              href="/profile"
+            <button
+              onClick={() => setProfileOpen(true)}
               className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
               title="Profile"
             >
               <User size={18} />
-            </Link>
+            </button>
             <button
               onClick={handleSignOut}
               className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
@@ -207,7 +209,7 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* Modal */}
+      {/* Snippet Modal */}
       <SnippetModal
         open={modalOpen}
         snippet={editingSnippet}
@@ -219,6 +221,9 @@ export default function DashboardPage() {
         }}
         onSave={handleSave}
       />
+
+      {/* Profile slide-out panel */}
+      <ProfilePanel open={profileOpen} onClose={() => setProfileOpen(false)} />
     </div>
   )
 }

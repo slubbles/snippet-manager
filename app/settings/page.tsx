@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { toast } from 'sonner'
-import { StylizedText } from '@/components/stylized-text'
 
 export default function SettingsPage() {
   const { data: session, isPending } = useSession()
@@ -105,7 +104,7 @@ export default function SettingsPage() {
         Back to Dashboard
       </Link>
 
-      <h1 className="mb-8 text-[28px] font-medium leading-[29.4px]"><StylizedText>Settings</StylizedText></h1>
+      <h1 className="mb-8 text-[28px] font-medium leading-[29.4px]">Settings</h1>
 
       {/* Update Name */}
       <section className="mb-8 rounded-xl border border-gray-200 p-6 dark:border-zinc-700/50">
@@ -131,7 +130,7 @@ export default function SettingsPage() {
 
       {/* Change Password */}
       <section className="mb-8 rounded-xl border border-gray-200 p-6 dark:border-zinc-700/50">
-        <h2 className="mb-4 text-[20px] font-medium leading-[23px]"><StylizedText>Change Password</StylizedText></h2>
+        <h2 className="mb-4 text-[20px] font-medium leading-[23px]">Change Password</h2>
         <form onSubmit={handleChangePassword} className="space-y-3">
           <input
             type="password"
@@ -174,7 +173,7 @@ export default function SettingsPage() {
 
       {/* Danger Zone */}
       <section className="rounded-xl border border-red-500/30 p-6">
-        <h2 className="mb-2 text-[20px] font-medium leading-[23px] text-red-500"><StylizedText>Danger Zone</StylizedText></h2>
+        <h2 className="mb-2 text-[20px] font-medium leading-[23px] text-red-500">Danger Zone</h2>
         <p className="mb-4 text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
           Permanently delete your account and all your data. This action cannot be undone.
         </p>

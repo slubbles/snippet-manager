@@ -22,8 +22,6 @@ import markdown from 'highlight.js/lib/languages/markdown'
 import yaml from 'highlight.js/lib/languages/yaml'
 import dockerfile from 'highlight.js/lib/languages/dockerfile'
 
-import { StylizedText } from './stylized-text'
-
 hljs.registerLanguage('javascript', javascript)
 hljs.registerLanguage('typescript', typescript)
 hljs.registerLanguage('python', python)
@@ -106,7 +104,7 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
 
       {/* Title */}
       <div className="mb-2 flex items-center gap-1.5 pr-16">
-        <h3 className="text-[14px] font-medium leading-[23.8px] truncate"><StylizedText>{snippet.title}</StylizedText></h3>
+        <h3 className="text-[14px] font-medium leading-[23.8px] truncate">{snippet.title}</h3>
         {snippet.url && (
           <a
             href={snippet.url}

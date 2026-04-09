@@ -1,10 +1,10 @@
-# SnippetVault
+# Snip Labs
 
 A **Personal Knowledge Base** for saving links, code snippets, and notes — organized in folders with full CRUD, URL auto-fetch, real-time search, and dark/light theming.
 
 ## Live Demo
 
-**[snippetvault on Vercel](https://snippet-manager-slubbles.vercel.app)** *(update URL after deploy)*
+**[Snip Labs on Vercel](https://snippet-manager-lemon.vercel.app)**
 
 ## Tech Stack
 

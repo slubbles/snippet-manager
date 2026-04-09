@@ -33,7 +33,7 @@ html {
   --font-sans: var(--font-inter);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
-  /* SnippetVault teal palette */
+  /* Snip Labs teal palette */
   --color-brand-900: #091413;
   --color-brand-700: #285A48;
   --color-brand-500: #408A71;
@@ -58,8 +58,3 @@ html {
   background: #52525b;
 }
 
-/* Bagoss Condensed — only for the letter G in headings */
-.bagoss-g {
-  font-family: var(--font-bagoss), sans-serif;
-  font-weight: 500;
-}

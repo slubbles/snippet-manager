@@ -2,7 +2,6 @@
 
 import { Plus, FileText } from 'lucide-react'
 import { SnippetCard } from './snippet-card'
-import { StylizedText } from './stylized-text'
 
 interface Snippet {
   id: string
@@ -51,7 +50,7 @@ export function SnippetGrid({
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h2 className="text-[20px] font-medium leading-[23px]">
-            <StylizedText>{searchQuery ? `Results for "${searchQuery}"` : folderName}</StylizedText>
+            {searchQuery ? `Results for "${searchQuery}"` : folderName}
           </h2>
           <p className="text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
             {snippets.length} snippet{snippets.length !== 1 ? 's' : ''}

@@ -5,7 +5,6 @@ import { signIn, signUp } from '@/lib/auth-client'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Code2, Eye, EyeOff } from 'lucide-react'
-import { StylizedText } from '@/components/stylized-text'
 
 export default function LoginPage() {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
@@ -68,15 +67,15 @@ export default function LoginPage() {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500">
               <Code2 size={22} className="text-white" />
             </div>
-            <span className="text-[20px] font-medium leading-[23px]">SnippetVault</span>
+            <span className="text-[20px] font-medium leading-[23px]">Snip Labs</span>
           </Link>
           <h2 className="mt-6 text-[28px] font-medium leading-[29.4px]">
-            <StylizedText>{mode === 'signin' ? 'Welcome back' : 'Create your account'}</StylizedText>
+            {mode === 'signin' ? 'Welcome back' : 'Create your account'}
           </h2>
           <p className="mt-2 text-[14px] font-normal leading-[23.8px] text-gray-500 dark:text-zinc-400">
-            <StylizedText>{mode === 'signin'
+            {mode === 'signin'
               ? 'Sign in to access your snippets'
-              : 'Start organizing your knowledge'}</StylizedText>
+              : 'Start organizing your knowledge'}
           </p>
         </div>
 

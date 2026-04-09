@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { FolderPlus, Layers } from 'lucide-react'
 import { FolderItem } from './folder-item'
-import { StylizedText } from './stylized-text'
 
 interface FolderData {
   id: string
@@ -47,7 +46,7 @@ export function Sidebar({
       {/* Header */}
       <div className="flex items-center gap-2 border-b border-gray-200 px-4 py-3 dark:border-zinc-800">
         <Layers size={20} className="text-brand-500" />
-        <span className="text-[14px] font-semibold leading-[23.8px]">SnippetVault</span>
+        <span className="text-[14px] font-semibold leading-[23.8px]">Snip Labs</span>
       </div>
 
       {/* Folder list */}
@@ -67,6 +66,15 @@ export function Sidebar({
             {totalSnippets}
           </span>
         </div>
+
+        {/* New Folder button */}
+        <button
+          onClick={() => setCreating(true)}
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] text-gray-500 transition-colors hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+        >
+          <FolderPlus size={16} />
+          New Folder
+        </button>
 
         {/* Divider */}
         <div className="my-2 border-t border-gray-200 dark:border-zinc-800" />
@@ -108,16 +116,6 @@ export function Sidebar({
         )}
       </div>
 
-      {/* Create folder button */}
-      <div className="border-t border-gray-200 p-2 dark:border-zinc-800">
-        <button
-          onClick={() => setCreating(true)}
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] text-gray-500 transition-colors hover:bg-gray-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
-        >
-          <FolderPlus size={16} />
-          New Folder
-        </button>
-      </div>
     </aside>
   )
 }

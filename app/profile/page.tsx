@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Pencil, Check, X, Folder, FileCode2, Calendar } from 'lucide-react'
 import { toast } from 'sonner'
-import { StylizedText } from '@/components/stylized-text'
 
 export default function ProfilePage() {
   const { data: session, isPending } = useSession()
@@ -110,7 +109,7 @@ export default function ProfilePage() {
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <h2 className="text-[18px] font-semibold leading-[27px]"><StylizedText>{session.user.name}</StylizedText></h2>
+              <h2 className="text-[18px] font-semibold leading-[27px]">{session.user.name}</h2>
               <button onClick={() => setEditingName(true)} className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300">
                 <Pencil size={14} />
               </button>
