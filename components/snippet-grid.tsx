@@ -25,12 +25,12 @@ interface SnippetGridProps {
 
 function SkeletonCard() {
   return (
-    <div className="flex flex-col rounded-xl border border-[#091413]/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.03]">
-      <div className="mb-3 h-4 w-3/4 animate-pulse rounded bg-[#091413]/10 dark:bg-white/10" />
-      <div className="mb-2 h-3 w-full animate-pulse rounded bg-[#091413]/10 dark:bg-white/10" />
-      <div className="mb-2 h-3 w-5/6 animate-pulse rounded bg-[#091413]/10 dark:bg-white/10" />
-      <div className="mb-4 h-3 w-2/3 animate-pulse rounded bg-[#091413]/10 dark:bg-white/10" />
-      <div className="mt-auto h-3 w-1/4 animate-pulse rounded bg-[#091413]/10 dark:bg-white/10" />
+    <div className="flex flex-col rounded-xl border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-white/[0.03]">
+      <div className="mb-3 h-4 w-3/4 animate-pulse rounded bg-black/10 dark:bg-white/10" />
+      <div className="mb-2 h-3 w-full animate-pulse rounded bg-black/10 dark:bg-white/10" />
+      <div className="mb-2 h-3 w-5/6 animate-pulse rounded bg-black/10 dark:bg-white/10" />
+      <div className="mb-4 h-3 w-2/3 animate-pulse rounded bg-black/10 dark:bg-white/10" />
+      <div className="mt-auto h-3 w-1/4 animate-pulse rounded bg-black/10 dark:bg-white/10" />
     </div>
   )
 }
@@ -52,13 +52,13 @@ export function SnippetGrid({
           <h2 className="truncate text-[20px] font-medium leading-[23px]">
             {searchQuery ? `Results for "${searchQuery}"` : folderName}
           </h2>
-          <p className="text-[14px] font-normal leading-[23.8px] text-[#091413]/60 dark:text-white/60">
+          <p className="text-[14px] font-normal leading-[23.8px] text-black/60 dark:text-white/60">
             {snippets.length} snippet{snippets.length !== 1 ? 's' : ''}
           </p>
         </div>
         <button
           onClick={onNewSnippet}
-          className="flex items-center gap-1.5 rounded-lg bg-brand-500 px-3 py-2 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700"
+          className="flex items-center gap-1.5 rounded-lg bg-black dark:bg-white px-3 py-2 text-[14px] font-medium leading-[23.8px] text-white dark:text-black transition-colors hover:bg-black/80 dark:hover:bg-white/80"
         >
           <Plus size={16} />
           New Snippet
@@ -77,11 +77,11 @@ export function SnippetGrid({
       {/* Empty state */}
       {!loading && snippets.length === 0 && (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <FileText size={48} className="mb-4 text-[#091413]/30 dark:text-white/20" />
-          <h3 className="mb-1 text-[14px] font-medium leading-[23.8px] text-[#091413]/60 dark:text-white/60">
+          <FileText size={48} className="mb-4 text-black/30 dark:text-white/20" />
+          <h3 className="mb-1 text-[14px] font-medium leading-[23.8px] text-black/60 dark:text-white/60">
             {searchQuery ? 'No snippets match your search' : 'No snippets yet'}
           </h3>
-          <p className="text-[14px] font-normal leading-[23.8px] text-[#091413]/40 dark:text-white/40">
+          <p className="text-[14px] font-normal leading-[23.8px] text-black/40 dark:text-white/40">
             {searchQuery
               ? 'Try a different search term'
               : 'Create your first snippet to get started'}

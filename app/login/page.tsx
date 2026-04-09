@@ -62,7 +62,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-full bg-white dark:bg-[#091413]">
+    <div className="flex min-h-full bg-white dark:bg-black">
       {/* Left column — Form */}
       <div className="flex w-full flex-col justify-center px-6 py-6 sm:py-12 lg:w-1/2 lg:px-16 xl:px-24">
         <div className="mx-auto w-full max-w-sm space-y-8">
@@ -80,13 +80,13 @@ export default function LoginPage() {
             <h2 className="text-[28px] font-semibold leading-[1.2] tracking-tight">
               {mode === 'signin' ? 'Welcome back' : 'Create an account'}
             </h2>
-            <p className="mt-2 text-[14px] leading-[23.8px] text-[#091413]/60 dark:text-white/60">
+            <p className="mt-2 text-[14px] leading-[23.8px] text-black/60 dark:text-white/60">
               {mode === 'signin' ? (
                 <>
                   Don&apos;t have an account?{' '}
                   <button
                     onClick={() => { setMode('signup'); setError('') }}
-                    className="font-medium text-brand-500 hover:text-brand-200"
+                    className="font-medium text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
                   >
                     Sign up
                   </button>
@@ -96,7 +96,7 @@ export default function LoginPage() {
                   Already have an account?{' '}
                   <button
                     onClick={() => { setMode('signin'); setError('') }}
-                    className="font-medium text-brand-500 hover:text-brand-200"
+                    className="font-medium text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
                   >
                     Log in
                   </button>
@@ -109,7 +109,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-4">
             {mode === 'signup' && (
               <div>
-                <label htmlFor="name" className="mb-1 block text-[12px] font-semibold leading-[20.4px] text-[#091413]/70 dark:text-white/60">
+                <label htmlFor="name" className="mb-1 block text-[12px] font-semibold leading-[20.4px] text-black/70 dark:text-white/60">
                   Name
                 </label>
                 <input
@@ -117,14 +117,14 @@ export default function LoginPage() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-brand-500"
+                  className="w-full rounded-lg border border-black/15 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-2 focus:ring-black/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-white"
                   placeholder="Your name"
                   autoComplete="name"
                 />
               </div>
             )}
             <div>
-              <label htmlFor="email" className="mb-1 block text-[12px] font-semibold leading-[20.4px] text-[#091413]/70 dark:text-white/60">
+              <label htmlFor="email" className="mb-1 block text-[12px] font-semibold leading-[20.4px] text-black/70 dark:text-white/60">
                 Email
               </label>
               <input
@@ -132,14 +132,14 @@ export default function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-brand-500"
+                className="w-full rounded-lg border border-black/15 bg-white px-3 py-2.5 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-2 focus:ring-black/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-white"
                 placeholder="you@example.com"
                 autoComplete="email"
                 required
               />
             </div>
             <div>
-              <label htmlFor="password" className="mb-1 block text-[12px] font-semibold leading-[20.4px] text-[#091413]/70 dark:text-white/60">
+              <label htmlFor="password" className="mb-1 block text-[12px] font-semibold leading-[20.4px] text-black/70 dark:text-white/60">
                 Password
               </label>
               <div className="relative">
@@ -148,7 +148,7 @@ export default function LoginPage() {
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2.5 pr-10 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-brand-500"
+                  className="w-full rounded-lg border border-black/15 bg-white px-3 py-2.5 pr-10 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-2 focus:ring-black/20 dark:border-white/15 dark:bg-white/5 dark:focus:border-white"
                   placeholder="Min 8 characters"
                   autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
                   required
@@ -157,7 +157,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[#091413]/40 hover:text-[#091413]/70 dark:text-white/40 dark:hover:text-white/70"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-black/40 hover:text-black/70 dark:text-white/40 dark:hover:text-white/70"
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -175,7 +175,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-brand-500 px-4 py-2.5 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full rounded-lg bg-black dark:bg-white px-4 py-2.5 text-[14px] font-medium leading-[23.8px] text-white dark:text-black transition-colors hover:bg-black/80 dark:hover:bg-white/80 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading
                 ? 'Please wait...'
@@ -196,7 +196,7 @@ export default function LoginPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-[#091413]/30" />
+        <div className="absolute inset-0 bg-black/30" />
         <div className="absolute bottom-12 left-12 right-12">
           <p className="text-[28px] font-semibold leading-[1.2] tracking-tight text-white">
             Capturing Moments,

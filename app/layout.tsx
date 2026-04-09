@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
@@ -36,7 +36,7 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="h-full bg-white font-[family-name:var(--font-inter)] text-[#091413] dark:bg-[#091413] dark:text-white">
+      <body className="h-full bg-white font-[family-name:var(--font-inter)] text-black dark:bg-black dark:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
           {children}
           <Toaster richColors position="bottom-right" />

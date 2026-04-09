@@ -140,6 +140,28 @@
 
 ---
 
+## Session: 2025-07-27 (ThemeToggle on All Pages)
+
+**Completion: 100%**
+
+### Accomplished
+- Audited all brand-* color usage across 15 files — confirmed ALL usages are accent-only (buttons, badges, focus rings, spinners, active states). No teal backgrounds or body text to remove
+- Added ThemeToggle to landing page nav (desktop + mobile hamburger menu)
+- Added ThemeToggle to login page (next to logo)
+- Added ThemeToggle to profile page (top-right, next to back link)
+- Added ThemeToggle to settings page (top-right, next to back link)
+- Build passes (0 errors, 12 routes), committed and pushed to GitHub
+- Vercel auto-deploy triggered
+
+### Pages with ThemeToggle: 5/5
+- Landing page: ✅
+- Login page: ✅
+- Dashboard: ✅ (already had it)
+- Profile page: ✅
+- Settings page: ✅
+
+---
+
 ## Session: 2025-07-26 (UI Overhaul + Rebrand)
 
 **Completion: All 6 requested changes done**

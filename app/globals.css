@@ -32,14 +32,6 @@ html {
 @theme inline {
   --font-sans: var(--font-inter);
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-
-  /* Snip Labs teal palette */
-  --color-brand-900: #091413;
-  --color-brand-700: #285A48;
-  --color-brand-500: #408A71;
-  --color-brand-200: #B0E4CC;
-  --color-brand-100: #d8f3e8;
-  --color-brand-50: #eef9f3;
 }
 
 /* Custom scrollbar */
@@ -51,11 +43,11 @@ html {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(9, 20, 19, 0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(9, 20, 19, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 :where(.dark) ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);

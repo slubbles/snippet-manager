@@ -130,7 +130,7 @@ export function SnippetModal({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-2xl rounded-2xl border border-[#091413]/10 bg-white p-4 sm:p-6 shadow-xl dark:border-white/15 dark:bg-[#091413]"
+        className="w-full max-w-2xl rounded-2xl border border-black/10 bg-white p-4 sm:p-6 shadow-xl dark:border-white/15 dark:bg-black"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -140,7 +140,7 @@ export function SnippetModal({
           </h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-[#091413]/40 hover:bg-[#091413]/5 dark:hover:bg-white/5"
+            className="rounded-lg p-2 text-black/40 hover:bg-black/5 dark:hover:bg-white/5"
           >
             <X size={18} />
           </button>
@@ -149,7 +149,7 @@ export function SnippetModal({
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* URL */}
           <div>
-            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60">
+            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-black/60 dark:text-white/60">
               URL (optional)
             </label>
             <div className="relative">
@@ -159,12 +159,12 @@ export function SnippetModal({
                 onChange={(e) => setUrl(e.target.value)}
                 onBlur={() => fetchTitle(url)}
                 placeholder="https://example.com"
-                className="h-10 w-full rounded-lg border border-[#091413]/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-white/15 dark:bg-white/5 dark:text-white"
+                className="h-10 w-full rounded-lg border border-black/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black/20 dark:focus:border-white dark:focus:ring-white/20 dark:border-white/15 dark:bg-white/5 dark:text-white"
               />
               {fetchingTitle && (
                 <Loader2
                   size={14}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-brand-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 animate-spin text-black dark:text-white"
                 />
               )}
             </div>
@@ -172,7 +172,7 @@ export function SnippetModal({
 
           {/* Title */}
           <div>
-            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60">
+            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-black/60 dark:text-white/60">
               Title *
             </label>
             <input
@@ -181,13 +181,13 @@ export function SnippetModal({
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Snippet title"
               required
-              className="h-10 w-full rounded-lg border border-[#091413]/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-white/15 dark:bg-white/5 dark:text-white"
+              className="h-10 w-full rounded-lg border border-black/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black/20 dark:focus:border-white dark:focus:ring-white/20 dark:border-white/15 dark:bg-white/5 dark:text-white"
             />
           </div>
 
           {/* Content */}
           <div>
-            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60">
+            <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-black/60 dark:text-white/60">
               Content
             </label>
             <textarea
@@ -195,21 +195,21 @@ export function SnippetModal({
               onChange={(e) => setContent(e.target.value)}
               placeholder="Paste your code, notes, or text here..."
               rows={6}
-              className="w-full rounded-lg border border-[#091413]/15 bg-white px-3 py-2 font-mono text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-white/15 dark:bg-white/5 dark:text-white"
+              className="w-full rounded-lg border border-black/15 bg-white px-3 py-2 font-mono text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black/20 dark:focus:border-white dark:focus:ring-white/20 dark:border-white/15 dark:bg-white/5 dark:text-white"
             />
           </div>
 
           {/* Folder + Language */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60">
+              <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-black/60 dark:text-white/60">
                 Folder *
               </label>
               <select
                 value={folderId}
                 onChange={(e) => setFolderId(e.target.value)}
                 required
-                className="h-10 w-full rounded-lg border border-[#091413]/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-white/15 dark:bg-white/5 dark:text-white"
+                className="h-10 w-full rounded-lg border border-black/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black/20 dark:focus:border-white dark:focus:ring-white/20 dark:border-white/15 dark:bg-white/5 dark:text-white"
               >
                 {folders.map((f) => (
                   <option key={f.id} value={f.id}>
@@ -219,13 +219,13 @@ export function SnippetModal({
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60">
+              <label className="mb-1 block text-[12px] font-normal leading-[20.4px] text-black/60 dark:text-white/60">
                 Language
               </label>
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="h-10 w-full rounded-lg border border-[#091413]/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/50 dark:border-white/15 dark:bg-white/5 dark:text-white"
+                className="h-10 w-full rounded-lg border border-black/15 bg-white px-3 text-[14px] leading-[23.8px] outline-none transition-colors focus:border-black focus:ring-1 focus:ring-black/20 dark:focus:border-white dark:focus:ring-white/20 dark:border-white/15 dark:bg-white/5 dark:text-white"
               >
                 {LANGUAGES.map((l) => (
                   <option key={l.value} value={l.value}>
@@ -241,14 +241,14 @@ export function SnippetModal({
             <button
               type="button"
               onClick={onClose}
-              className="rounded-lg px-4 py-2.5 text-[14px] leading-[23.8px] text-[#091413]/60 transition-colors hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
+              className="rounded-lg px-4 py-2.5 text-[14px] leading-[23.8px] text-black/60 transition-colors hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/5"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={!title.trim() || !folderId}
-              className="rounded-lg bg-brand-500 px-4 py-2.5 text-[14px] font-medium leading-[23.8px] text-white transition-colors hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-lg bg-black dark:bg-white px-4 py-2.5 text-[14px] font-medium leading-[23.8px] text-white dark:text-black transition-colors hover:bg-black/80 dark:hover:bg-white/80 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isEdit ? 'Update' : 'Save'}
             </button>

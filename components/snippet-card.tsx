@@ -94,10 +94,10 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
   }
 
   return (
-    <div className="group relative flex flex-col rounded-xl border border-[#091413]/10 bg-white p-4 transition-all hover:border-[#091413]/15 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/15">
+    <div className="group relative flex flex-col rounded-xl border border-black/10 bg-white p-4 transition-all hover:border-black/15 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:hover:border-white/15">
       {/* Language badge */}
       {snippet.language && (
-        <span className="absolute right-3 top-3 rounded-full bg-brand-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-brand-500">
+        <span className="absolute right-3 top-3 rounded-full bg-black/5 dark:bg-white/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-black dark:text-white">
           {snippet.language}
         </span>
       )}
@@ -111,7 +111,7 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="shrink-0 p-1 text-brand-500 hover:text-brand-200"
+            className="shrink-0 p-1 text-black/70 hover:text-black dark:text-white/70 dark:hover:text-white"
           >
             <ExternalLink size={14} />
           </a>
@@ -121,7 +121,7 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
       {/* Content preview */}
       {snippet.content ? (
         snippet.language ? (
-          <pre className="mb-4 flex-1 overflow-hidden rounded-md bg-[#091413]/[0.03] p-2 text-[11px] leading-relaxed dark:bg-[#091413]/60">
+          <pre className="mb-4 flex-1 overflow-hidden rounded-md bg-black/[0.03] p-2 text-[11px] leading-relaxed dark:bg-black/60">
             <code
               ref={codeRef}
               className={`language-${snippet.language} !bg-transparent line-clamp-4`}
@@ -130,31 +130,31 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
             </code>
           </pre>
         ) : (
-          <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-[#091413]/60 dark:text-white/60 line-clamp-3">
+          <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-black/60 dark:text-white/60 line-clamp-3">
             {snippet.content}
           </p>
         )
       ) : (
-        <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-[#091413]/40 dark:text-white/40 italic line-clamp-3">
+        <p className="mb-4 flex-1 text-[12px] font-normal leading-[20.4px] text-black/40 dark:text-white/40 italic line-clamp-3">
           No content
         </p>
       )}
 
       {/* Footer */}
       <div className="flex items-center justify-between">
-        <span className="text-[11px] text-[#091413]/40 dark:text-white/40">
+        <span className="text-[11px] text-black/40 dark:text-white/40">
           {timeAgo(snippet.createdAt)}
         </span>
         <div className="flex items-center gap-1 opacity-100 md:opacity-0 transition-opacity md:group-hover:opacity-100">
           <button
             onClick={onEdit}
-            className="rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
+            className="rounded p-2 text-black/40 hover:bg-black/5 hover:text-black/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
           >
             <Pencil size={14} />
           </button>
           <button
             onClick={handleCopy}
-            className="rounded p-2 text-[#091413]/40 hover:bg-[#091413]/5 hover:text-[#091413]/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
+            className="rounded p-2 text-black/40 hover:bg-black/5 hover:text-black/70 dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white/70"
           >
             <Copy size={14} />
           </button>

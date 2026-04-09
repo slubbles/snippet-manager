@@ -43,8 +43,8 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
     <div
       className={`group flex items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] cursor-pointer transition-colors ${
         selected
-          ? 'bg-brand-500/10 text-brand-500 border-l-2 border-brand-500'
-          : 'text-[#091413]/70 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5'
+          ? 'bg-black/5 dark:bg-white/10 text-black dark:text-white border-l-2 border-black dark:border-white'
+          : 'text-black/70 hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/5'
       }`}
       onClick={() => !editing && onSelect()}
     >
@@ -93,7 +93,7 @@ export function FolderItem({ folder, selected, onSelect, onRename, onDelete }: F
         </div>
       )}
 
-      <span className="ml-auto text-[12px] text-[#091413]/40 dark:text-white/40 tabular-nums">
+      <span className="ml-auto text-[12px] text-black/40 dark:text-white/40 tabular-nums">
         {folder._count.snippets}
       </span>
     </div>

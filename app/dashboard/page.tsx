@@ -125,7 +125,7 @@ export default function DashboardPage() {
   if (isPending) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-black dark:border-white border-t-transparent" />
       </div>
     )
   }
@@ -164,10 +164,10 @@ export default function DashboardPage() {
       {/* Main content */}
       <div className="flex flex-1 flex-col min-w-0">
         {/* Top bar */}
-        <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-[#091413]/10 bg-white/80 px-4 py-2.5 backdrop-blur dark:border-white/10 dark:bg-[#091413]/80">
+        <header className="sticky top-0 z-30 flex items-center gap-3 border-b border-black/10 bg-white/80 px-4 py-2.5 backdrop-blur dark:border-white/10 dark:bg-black/80">
           <button
             onClick={() => setMobileSidebarOpen(true)}
-            className="rounded-lg p-2 text-[#091413]/60 hover:bg-[#091413]/5 md:hidden dark:text-white/60 dark:hover:bg-white/5"
+            className="rounded-lg p-2 text-black/60 hover:bg-black/5 md:hidden dark:text-white/60 dark:hover:bg-white/5"
           >
             <Menu size={20} />
           </button>
@@ -176,14 +176,14 @@ export default function DashboardPage() {
             <ThemeToggle />
             <button
               onClick={() => setProfileOpen(true)}
-              className="rounded-lg p-2 text-[#091413]/60 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
+              className="rounded-lg p-2 text-black/60 hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/5"
               title="Profile"
             >
               <User size={18} />
             </button>
             <button
               onClick={handleSignOut}
-              className="rounded-lg p-2 text-[#091413]/60 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
+              className="rounded-lg p-2 text-black/60 hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/5"
               title="Sign out"
             >
               <LogOut size={18} />

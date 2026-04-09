@@ -43,9 +43,9 @@ export function Sidebar({
   }
 
   return (
-    <aside className="flex h-full w-72 max-w-[85vw] flex-col border-r border-[#091413]/10 bg-white dark:border-white/10 dark:bg-[#091413]">
+    <aside className="flex h-full w-72 max-w-[85vw] flex-col border-r border-black/10 bg-white dark:border-white/10 dark:bg-black">
       {/* Header */}
-      <div className="flex items-center gap-2 border-b border-[#091413]/10 px-4 py-3 dark:border-white/10">
+      <div className="flex items-center gap-2 border-b border-black/10 px-4 py-3 dark:border-white/10">
         <ThemeLogo size={22} />
         <span className="text-[14px] font-semibold leading-[23.8px]">Snip Labs</span>
       </div>
@@ -56,14 +56,14 @@ export function Sidebar({
         <div
           className={`flex items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] cursor-pointer transition-colors ${
             selectedFolderId === null
-              ? 'bg-brand-500/10 text-brand-500 border-l-2 border-brand-500'
-              : 'text-[#091413]/70 hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5'
+              ? 'bg-black/5 dark:bg-white/10 text-black dark:text-white border-l-2 border-black dark:border-white'
+              : 'text-black/70 hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/5'
           }`}
           onClick={() => onSelectFolder(null)}
         >
           <Layers size={16} className="shrink-0" />
           <span className="flex-1 truncate">All Snippets</span>
-          <span className="text-[12px] text-[#091413]/40 dark:text-white/40 tabular-nums">
+          <span className="text-[12px] text-black/40 dark:text-white/40 tabular-nums">
             {totalSnippets}
           </span>
         </div>
@@ -71,14 +71,14 @@ export function Sidebar({
         {/* New Folder button */}
         <button
           onClick={() => setCreating(true)}
-          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 transition-colors hover:bg-[#091413]/5 dark:text-white/60 dark:hover:bg-white/5"
+          className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-[14px] leading-[23.8px] text-black/60 transition-colors hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/5"
         >
           <FolderPlus size={16} />
           New Folder
         </button>
 
         {/* Divider */}
-        <div className="my-2 border-t border-[#091413]/10 dark:border-white/10" />
+        <div className="my-2 border-t border-black/10 dark:border-white/10" />
 
         {/* Folders */}
         {folders.map((folder) => (
@@ -111,7 +111,7 @@ export function Sidebar({
                 }
               }}
               placeholder="Folder name..."
-              className="flex-1 min-w-0 rounded bg-transparent text-[14px] leading-[23.8px] outline-none placeholder-[#091413]/40 dark:placeholder-white/40"
+              className="flex-1 min-w-0 rounded bg-transparent text-[14px] leading-[23.8px] outline-none placeholder-black/40 dark:placeholder-white/40"
             />
           </div>
         )}
