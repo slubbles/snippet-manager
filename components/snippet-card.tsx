@@ -1,7 +1,46 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { ExternalLink, Pencil, Copy, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import typescript from 'highlight.js/lib/languages/typescript'
+import python from 'highlight.js/lib/languages/python'
+import css from 'highlight.js/lib/languages/css'
+import html from 'highlight.js/lib/languages/xml'
+import json from 'highlight.js/lib/languages/json'
+import bash from 'highlight.js/lib/languages/bash'
+import sql from 'highlight.js/lib/languages/sql'
+import go from 'highlight.js/lib/languages/go'
+import rust from 'highlight.js/lib/languages/rust'
+import java from 'highlight.js/lib/languages/java'
+import csharp from 'highlight.js/lib/languages/csharp'
+import php from 'highlight.js/lib/languages/php'
+import ruby from 'highlight.js/lib/languages/ruby'
+import markdown from 'highlight.js/lib/languages/markdown'
+import yaml from 'highlight.js/lib/languages/yaml'
+import dockerfile from 'highlight.js/lib/languages/dockerfile'
+
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('python', python)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('html', html)
+hljs.registerLanguage('xml', html)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('shell', bash)
+hljs.registerLanguage('sql', sql)
+hljs.registerLanguage('go', go)
+hljs.registerLanguage('rust', rust)
+hljs.registerLanguage('java', java)
+hljs.registerLanguage('csharp', csharp)
+hljs.registerLanguage('php', php)
+hljs.registerLanguage('ruby', ruby)
+hljs.registerLanguage('markdown', markdown)
+hljs.registerLanguage('yaml', yaml)
+hljs.registerLanguage('dockerfile', dockerfile)
 
 interface Snippet {
   id: string
@@ -32,6 +71,19 @@ function timeAgo(dateStr: string): string {
 }
 
 export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
+  const codeRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (codeRef.current && snippet.content && snippet.language) {
+      codeRef.current.removeAttribute('data-highlighted')
+      try {
+        hljs.highlightElement(codeRef.current)
+      } catch {
+        // language not registered — leave as plain text
+      }
+    }
+  }, [snippet.content, snippet.language])
+
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(snippet.content)
@@ -67,13 +119,26 @@ export function SnippetCard({ snippet, onEdit, onDelete }: SnippetCardProps) {
       </div>
 
       {/* Content preview */}
-      <p
-        className={`mb-4 flex-1 text-xs leading-relaxed text-gray-500 dark:text-zinc-400 line-clamp-3 ${
-          snippet.language ? 'font-mono' : ''
-        }`}
-      >
-        {snippet.content || 'No content'}
-      </p>
+      {snippet.content ? (
+        snippet.language ? (
+          <pre className="mb-4 flex-1 overflow-hidden rounded-md bg-gray-50 p-2 text-[11px] leading-relaxed dark:bg-zinc-900/60">
+            <code
+              ref={codeRef}
+              className={`language-${snippet.language} !bg-transparent line-clamp-4`}
+            >
+              {snippet.content}
+            </code>
+          </pre>
+        ) : (
+          <p className="mb-4 flex-1 text-xs leading-relaxed text-gray-500 dark:text-zinc-400 line-clamp-3">
+            {snippet.content}
+          </p>
+        )
+      ) : (
+        <p className="mb-4 flex-1 text-xs leading-relaxed text-gray-400 dark:text-zinc-500 italic line-clamp-3">
+          No content
+        </p>
+      )}
 
       {/* Footer */}
       <div className="flex items-center justify-between">

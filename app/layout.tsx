@@ -17,6 +17,17 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SnippetVault",
   description: "Personal Knowledge Base — save links, code snippets, and notes",
+  openGraph: {
+    title: "SnippetVault",
+    description: "Personal Knowledge Base — save links, code snippets, and notes",
+    type: "website",
+    siteName: "SnippetVault",
+  },
+  twitter: {
+    card: "summary",
+    title: "SnippetVault",
+    description: "Personal Knowledge Base — save links, code snippets, and notes",
+  },
 };
 
 export default function RootLayout({

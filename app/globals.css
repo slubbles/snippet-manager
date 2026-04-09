@@ -1,6 +1,29 @@
 @import "tailwindcss";
+@import "highlight.js/styles/github.css" layer(base);
+@import "highlight.js/styles/github-dark.css" layer(base) (prefers-color-scheme: dark);
 
 @custom-variant dark (&:where(.dark *));
+
+/* Force highlight.js dark theme when .dark class is present (next-themes) */
+:where(.dark) .hljs {
+  background: transparent !important;
+  color: #e6edf3 !important;
+}
+:where(.dark) .hljs-keyword { color: #ff7b72 !important; }
+:where(.dark) .hljs-string { color: #a5d6ff !important; }
+:where(.dark) .hljs-title { color: #d2a8ff !important; }
+:where(.dark) .hljs-comment { color: #8b949e !important; }
+:where(.dark) .hljs-number { color: #79c0ff !important; }
+:where(.dark) .hljs-built_in { color: #ffa657 !important; }
+:where(.dark) .hljs-literal { color: #79c0ff !important; }
+:where(.dark) .hljs-type { color: #ffa657 !important; }
+:where(.dark) .hljs-params { color: #e6edf3 !important; }
+:where(.dark) .hljs-attr { color: #79c0ff !important; }
+
+/* Light mode hljs override */
+:where(:not(.dark)) .hljs {
+  background: transparent !important;
+}
 
 @theme inline {
   --font-sans: var(--font-geist-sans);
