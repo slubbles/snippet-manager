@@ -7,6 +7,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Eye, EyeOff } from 'lucide-react'
 import { ThemeLogo } from '@/components/theme-logo'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function LoginPage() {
   const [mode, setMode] = useState<'signin' | 'signup'>('signin')
@@ -66,11 +67,12 @@ export default function LoginPage() {
       <div className="flex w-full flex-col justify-center px-6 py-6 sm:py-12 lg:w-1/2 lg:px-16 xl:px-24">
         <div className="mx-auto w-full max-w-sm space-y-8">
           {/* Logo + back link */}
-          <div>
+          <div className="flex items-center justify-between">
             <Link href="/" className="inline-flex items-center gap-2">
               <ThemeLogo size={36} />
               <span className="text-[20px] font-medium leading-[23px]">Snip Labs</span>
             </Link>
+            <ThemeToggle />
           </div>
 
           {/* Heading */}

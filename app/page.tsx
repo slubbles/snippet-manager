@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Code2, FolderOpen, Link2, Search, Sun, Shield, Zap, Clock, ChevronDown, Menu, X } from 'lucide-react'
 import { ThemeLogo } from '@/components/theme-logo'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function LandingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -22,6 +23,7 @@ export default function LandingPage() {
           </Link>
           {/* Desktop nav */}
           <div className="hidden items-center gap-3 sm:flex">
+            <ThemeToggle />
             <Link
               href="/login"
               className="rounded-lg px-4 py-2 text-[14px] font-medium leading-[23.8px] text-[#091413]/70 hover:text-[#091413] dark:text-white/60 dark:hover:text-white transition-colors"
@@ -48,6 +50,10 @@ export default function LandingPage() {
         {mobileMenuOpen && (
           <div className="border-t border-[#091413]/10 px-5 py-4 dark:border-white/10 sm:hidden">
             <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-2 px-4 py-1">
+                <ThemeToggle />
+                <span className="text-[14px] text-[#091413]/60 dark:text-white/60">Toggle theme</span>
+              </div>
               <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}

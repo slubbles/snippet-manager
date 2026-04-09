@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { toast } from 'sonner'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function SettingsPage() {
   const { data: session, isPending } = useSession()
@@ -96,13 +97,16 @@ export default function SettingsPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-10">
-      <Link
-        href="/dashboard"
-        className="mb-8 inline-flex items-center gap-1.5 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
-      >
-        <ArrowLeft size={16} />
-        Back to Dashboard
-      </Link>
+      <div className="mb-8 flex items-center justify-between">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center gap-1.5 py-2 text-[14px] leading-[23.8px] text-[#091413]/60 hover:text-[#091413]/80 dark:text-white/60 dark:hover:text-white/80"
+        >
+          <ArrowLeft size={16} />
+          Back to Dashboard
+        </Link>
+        <ThemeToggle />
+      </div>
 
       <h1 className="mb-8 text-[28px] font-medium leading-[29.4px]">Settings</h1>
 
