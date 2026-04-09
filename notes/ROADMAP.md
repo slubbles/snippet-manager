@@ -284,182 +284,168 @@ Fetches a URL server-side, extracts `<title>` tag, returns it.
 
 ### Phase 1 — Project Setup
 - [x] Plan architecture and create roadmap
-- [ ] Run `npx create-next-app@latest . --yes` (in snippet-manager directory)
-- [ ] Verify dev server starts: `npm run dev` → http://localhost:3000
-- [ ] Install runtime deps: `npm i @prisma/client cheerio next-themes sonner lucide-react`
-- [ ] Install dev deps: `npm i -D prisma`
-- [ ] Initialize Prisma: `npx prisma init`
-- [ ] Write Prisma schema (Folder + Snippet models as specified above)
-- [ ] Create `.env` with `DATABASE_URL=postgresql://...?sslmode=require`
-- [ ] Push schema to Neon: `npx prisma db push`
-- [ ] Create `src/lib/prisma.ts` with singleton pattern
-- [ ] Add `"postinstall": "prisma generate"` to package.json scripts
-- [ ] Verify: `npx prisma studio` shows Folder + Snippet tables
-- [ ] **CHECKPOINT: Project scaffolded, DB connected, schema synced.**
+- [x] Run `npx create-next-app@latest . --yes` (in snippet-manager directory)
+- [x] Verify dev server starts: `npm run dev` → http://localhost:3000
+- [x] Install runtime deps: `npm i @prisma/client cheerio next-themes sonner lucide-react`
+- [x] Install dev deps: `npm i -D prisma`
+- [x] Initialize Prisma: `npx prisma init`
+- [x] Write Prisma schema (Folder + Snippet models as specified above)
+- [x] Create `.env` with `DATABASE_URL=postgresql://...?sslmode=require`
+- [x] Push schema to Neon: `npx prisma db push`
+- [x] Create `lib/prisma.ts` with singleton pattern
+- [x] Add `"postinstall": "prisma generate"` to package.json scripts
+- [x] Verify: DB tables created and tested with seed data
+- [x] **CHECKPOINT: Project scaffolded, DB connected, schema synced.**
 
 ### Phase 2 — API Routes
-- [ ] Create `src/app/api/folders/route.ts`
-  - [ ] GET: return all folders with `_count.snippets`, sorted by name
-  - [ ] POST: create folder, validate name non-empty
-  - [ ] PUT: update folder name by id
-  - [ ] DELETE: delete folder by id (cascade)
-- [ ] Create `src/app/api/snippets/route.ts`
-  - [ ] GET: return snippets, optional `folderId` filter, sorted by `createdAt desc`
-  - [ ] POST: create snippet, validate title + folderId required
-  - [ ] PUT: update snippet by id
-  - [ ] DELETE: delete snippet by id
-- [ ] Create `src/app/api/metadata/route.ts`
-  - [ ] GET: fetch URL, extract `<title>` with cheerio, 5s timeout
-  - [ ] Always return `{ title: "" }` on any failure
-- [ ] Test all endpoints: create folder → create snippet → read → update → delete
-- [ ] **CHECKPOINT: Backend complete. All 3 API route files work. Test with curl or browser.**
+- [x] Create `app/api/folders/route.ts`
+  - [x] GET: return all folders with `_count.snippets`, sorted by name
+  - [x] POST: create folder, validate name non-empty
+  - [x] PUT: update folder name by id
+  - [x] DELETE: delete folder by id (cascade)
+- [x] Create `app/api/snippets/route.ts`
+  - [x] GET: return snippets, optional `folderId` filter, sorted by `createdAt desc`
+  - [x] POST: create snippet, validate title + folderId required
+  - [x] PUT: update snippet by id
+  - [x] DELETE: delete snippet by id
+- [x] Create `app/api/metadata/route.ts`
+  - [x] GET: fetch URL, extract `<title>` with cheerio, 5s timeout
+  - [x] Always return `{ title: "" }` on any failure
+- [x] Test all endpoints: create folder → create snippet → read → update → delete
+- [x] **CHECKPOINT: Backend complete. All 3 API route files work.**
 
 ### Phase 3 — Dashboard Layout + Theme
-- [ ] Update `src/app/layout.tsx`:
-  - [ ] Add `suppressHydrationWarning` to `<html>`
-  - [ ] Wrap children with ThemeProvider from `next-themes` (`attribute="class"`, `defaultTheme="dark"`)
-  - [ ] Add `<Toaster />` from sonner
-  - [ ] Set metadata: title "SnippetVault", description
-- [ ] Update `src/app/globals.css`:
-  - [ ] Keep Tailwind directives
-  - [ ] Add dark mode custom variant if needed for Tailwind v4
-  - [ ] Add custom scrollbar styles (thin, subtle)
-- [ ] Create `src/components/theme-toggle.tsx`:
-  - [ ] Sun/Moon icon button
-  - [ ] Use `useTheme()` from next-themes
-  - [ ] Add `mounted` state check to prevent hydration mismatch
-- [ ] Update `src/app/page.tsx` as the dashboard shell:
-  - [ ] `"use client"` — entire dashboard is client-rendered
-  - [ ] Two-panel layout: sidebar (w-72 fixed) + main content (flex-1)
-  - [ ] Top bar with app title, search bar, theme toggle
-  - [ ] All state managed here: selectedFolderId, searchQuery, snippets, folders
-- [ ] **CHECKPOINT: Dashboard shell renders. Theme toggle works. Layout looks right.**
+- [x] Update `app/layout.tsx`:
+  - [x] Add `suppressHydrationWarning` to `<html>`
+  - [x] Wrap children with ThemeProvider from `next-themes` (`attribute="class"`, `defaultTheme="dark"`)
+  - [x] Add `<Toaster />` from sonner
+  - [x] Set metadata: title "SnippetVault", description
+- [x] Update `app/globals.css`:
+  - [x] Keep Tailwind directives
+  - [x] Add dark mode custom variant for Tailwind v4
+  - [x] Add custom scrollbar styles (thin, subtle)
+- [x] Create `components/theme-toggle.tsx`:
+  - [x] Sun/Moon icon button
+  - [x] Use `useTheme()` from next-themes
+  - [x] Add `mounted` state check to prevent hydration mismatch
+- [x] Update `app/page.tsx` as the dashboard shell:
+  - [x] `"use client"` — entire dashboard is client-rendered
+  - [x] Two-panel layout: sidebar (w-72 fixed) + main content (flex-1)
+  - [x] Top bar with search bar, theme toggle
+  - [x] All state managed here: selectedFolderId, searchQuery, snippets, folders
+- [x] **CHECKPOINT: Dashboard shell renders. Theme toggle works. Layout looks right.**
 
 ### Phase 4 — Sidebar + Folder Management
-- [ ] Create `src/components/sidebar.tsx`:
-  - [ ] Header: app icon/logo + "Folders" label
-  - [ ] "All Snippets" option at top (selectedFolderId = null)
-  - [ ] List of folder items
-  - [ ] "+ New Folder" button at bottom
-  - [ ] Selected folder has highlighted background
-  - [ ] Snippet count badge on each folder
-- [ ] Create `src/components/folder-item.tsx`:
-  - [ ] Folder icon + name + count
-  - [ ] Hover: show rename (pencil) and delete (trash) icons
-  - [ ] Rename: inline edit mode — click pencil → name becomes input → Enter to save, Escape to cancel
-  - [ ] Delete: click trash → confirmation dialog → delete
-- [ ] Create custom hook `src/hooks/use-folders.ts`:
-  - [ ] `folders`: array state
-  - [ ] `loading`: boolean
-  - [ ] `fetchFolders()`: GET /api/folders → set state
-  - [ ] `createFolder(name)`: POST /api/folders → refetch
-  - [ ] `updateFolder(id, name)`: PUT /api/folders → refetch
-  - [ ] `deleteFolder(id)`: DELETE /api/folders → refetch
-  - [ ] Auto-fetch on mount with `useEffect`
-- [ ] Wire everything together in `page.tsx`
-- [ ] **CHECKPOINT: Can create, rename, delete folders. Sidebar shows counts.**
+- [x] Create `components/sidebar.tsx`:
+  - [x] Header: app icon/logo + "SnippetVault" label
+  - [x] "All Snippets" option at top (selectedFolderId = null)
+  - [x] List of folder items
+  - [x] "+ New Folder" button at bottom
+  - [x] Selected folder has highlighted background
+  - [x] Snippet count badge on each folder
+- [x] Create `components/folder-item.tsx`:
+  - [x] Folder icon + name + count
+  - [x] Hover: show rename (pencil) and delete (trash) icons
+  - [x] Rename: inline edit mode — click pencil → name becomes input → Enter to save, Escape to cancel
+  - [x] Delete: click trash → confirmation dialog → delete
+- [x] Create custom hook `hooks/use-folders.ts`:
+  - [x] `folders`: array state
+  - [x] `loading`: boolean
+  - [x] `fetchFolders()`: GET /api/folders → set state
+  - [x] `createFolder(name)`: POST /api/folders → refetch
+  - [x] `updateFolder(id, name)`: PUT /api/folders → refetch
+  - [x] `deleteFolder(id)`: DELETE /api/folders → refetch
+  - [x] Auto-fetch on mount with `useEffect`
+- [x] Wire everything together in `page.tsx`
+- [x] **CHECKPOINT: Can create, rename, delete folders. Sidebar shows counts.**
 
 ### Phase 5 — Snippet Grid + CRUD
-- [ ] Create `src/components/snippet-card.tsx`:
-  - [ ] Card layout: title (bold, truncated), content preview (3 lines, truncated), language badge (top-right corner)
-  - [ ] Bottom row: relative date (e.g. "2 hours ago") on left, action icons on right
-  - [ ] Action icons (visible on hover): edit (pencil), copy (clipboard), delete (trash)
-  - [ ] If snippet has URL: show link icon next to title, title is clickable → opens URL in new tab
-  - [ ] Dark mode: zinc-800 bg, zinc-700 hover. Light mode: white bg, gray-50 hover + border
-- [ ] Create `src/components/snippet-grid.tsx`:
-  - [ ] CSS Grid: `grid-cols-1 md:grid-cols-2 xl:grid-cols-3` gap-4
-  - [ ] Receives filtered snippets as prop
-  - [ ] Shows header: "FolderName — X snippets" (or "All Snippets — X snippets")
-  - [ ] "+ New Snippet" button in header area
-  - [ ] Empty state when no snippets: illustration + message + CTA
-- [ ] Create `src/components/snippet-modal.tsx`:
-  - [ ] Full-screen overlay with centered modal (max-w-2xl)
-  - [ ] Form fields (top to bottom):
-    1. **URL field** (optional): text input. On blur or after paste, if it looks like a URL → auto-fetch title. Show spinner while fetching.
-    2. **Title**: text input. Auto-filled from URL fetch, but editable.
-    3. **Content**: textarea (min 6 rows, resizable). This is the snippet body — code, notes, whatever.
-    4. **Folder**: dropdown select populated from folders list. Default to currently selected folder.
-    5. **Language** (optional): dropdown with common options.
-  - [ ] Footer: Cancel button + Save button
-  - [ ] Edit mode: pre-fill all fields from existing snippet
-  - [ ] Create mode: title + content empty, URL empty, folder = current, language = None
-- [ ] Create custom hook `src/hooks/use-snippets.ts`:
-  - [ ] `snippets`: array state
-  - [ ] `loading`: boolean
-  - [ ] `fetchSnippets(folderId?)`: GET /api/snippets?folderId=... → set state
-  - [ ] `createSnippet(data)`: POST /api/snippets → refetch
-  - [ ] `updateSnippet(data)`: PUT /api/snippets → refetch
-  - [ ] `deleteSnippet(id)`: DELETE /api/snippets → refetch
-  - [ ] Re-fetch when `selectedFolderId` changes
-- [ ] Wire URL field to metadata API:
-  - [ ] Detect URL pattern: starts with http:// or https://
-  - [ ] Debounce 500ms after typing stops or on blur
-  - [ ] Call GET /api/metadata?url=...
-  - [ ] If title returned, auto-fill title field (only if title is currently empty)
-  - [ ] Show small spinner while fetching, "Title fetched!" success message
-- [ ] Wire delete: confirmation dialog → API call → refetch → toast "Snippet deleted"
-- [ ] Wire copy: click copy icon → `navigator.clipboard.writeText(snippet.content)` → toast "Copied!"
-- [ ] **CHECKPOINT: Full CRUD for both folders and snippets. URL auto-fetch works. Copy works.**
+- [x] Create `components/snippet-card.tsx`:
+  - [x] Card layout: title (bold, truncated), content preview (3 lines, truncated), language badge (top-right corner)
+  - [x] Bottom row: relative date on left, action icons on right
+  - [x] Action icons (visible on hover): edit (pencil), copy (clipboard), delete (trash)
+  - [x] If snippet has URL: show link icon next to title, opens URL in new tab
+  - [x] Dark mode + Light mode styling
+- [x] Create `components/snippet-grid.tsx`:
+  - [x] CSS Grid: responsive columns with gap-4
+  - [x] Receives filtered snippets as prop
+  - [x] Shows header: "FolderName — X snippets"
+  - [x] "+ New Snippet" button in header area
+  - [x] Empty state when no snippets: icon + message
+- [x] Create `components/snippet-modal.tsx`:
+  - [x] Full-screen overlay with centered modal (max-w-2xl)
+  - [x] URL field with auto-fetch + spinner
+  - [x] Title field (auto-filled from URL fetch)
+  - [x] Content textarea (6 rows)
+  - [x] Folder dropdown + Language dropdown
+  - [x] Cancel + Save buttons
+  - [x] Edit mode: pre-fill all fields
+  - [x] Create mode: empty fields, folder = current
+- [x] Create custom hook `hooks/use-snippets.ts`:
+  - [x] `snippets`, `loading`, `fetchSnippets`, `createSnippet`, `updateSnippet`, `deleteSnippet`
+  - [x] Re-fetch when `selectedFolderId` changes
+- [x] Wire URL field to metadata API with auto-fill
+- [x] Wire delete: confirmation → API call → refetch → toast
+- [x] Wire copy: clipboard → toast "Copied!"
+- [x] **CHECKPOINT: Full CRUD for both folders and snippets. URL auto-fetch works. Copy works.**
 
 ### Phase 6 — Search
-- [ ] Create `src/components/search-bar.tsx`:
-  - [ ] Magnifying glass icon + text input
-  - [ ] Placeholder: "Search snippets..."
-  - [ ] On change: update `searchQuery` state in parent (page.tsx)
-  - [ ] Clear button (X) when query is non-empty
-- [ ] Filtering logic (in `page.tsx` or a `useMemo`):
-  - [ ] When `searchQuery` is set: fetch ALL snippets (not just current folder), filter client-side
-  - [ ] Match: `snippet.title.toLowerCase().includes(query)` OR `snippet.content.toLowerCase().includes(query)`
-  - [ ] Show result count: "X results for 'debounce'"
-  - [ ] When search is cleared: go back to showing current folder's snippets
-- [ ] **CHECKPOINT: Search filters across all snippets in real-time.**
+- [x] Create `components/search-bar.tsx`:
+  - [x] Magnifying glass icon + text input
+  - [x] Placeholder: "Search snippets..."
+  - [x] On change: update `searchQuery` state in parent (page.tsx)
+  - [x] Clear button (X) when query is non-empty
+  - [x] `Ctrl+K` keyboard hint badge
+- [x] Filtering logic (in `page.tsx` via `useMemo`):
+  - [x] When `searchQuery` is set: fetch ALL snippets, filter client-side
+  - [x] Match title OR content (case-insensitive)
+  - [x] Show result count: "Results for 'query'"
+  - [x] When search is cleared: go back to showing current folder's snippets
+- [x] **CHECKPOINT: Search filters across all snippets in real-time.**
 
 ### Phase 7 — Loading States + Error Handling + Polish
-- [ ] Loading skeletons:
-  - [ ] Sidebar: 5 skeleton folder items (pulse animation)
-  - [ ] Snippet grid: 6 skeleton cards (pulse animation)
-  - [ ] Show skeletons on initial load and when switching folders
-- [ ] Error handling:
-  - [ ] Wrap all API calls in try/catch in hooks
-  - [ ] On error: `toast.error("Failed to create folder")` (use sonner)
-  - [ ] On success: `toast.success("Snippet saved!")` (use sonner)
-- [ ] Empty states:
-  - [ ] No folders: "Create your first folder to start organizing" + folder icon
-  - [ ] No snippets in folder: "This folder is empty. Add your first snippet!" + plus icon
-  - [ ] No search results: "No snippets match 'query'. Try a different search." + search icon
-- [ ] Responsive mobile:
-  - [ ] Sidebar: hidden by default on `<md` screens
-  - [ ] Hamburger button in top-left to toggle sidebar
-  - [ ] Sidebar slides in as overlay on mobile (with backdrop)
-  - [ ] Snippet grid: single column on mobile
-- [ ] Keyboard shortcuts:
-  - [ ] `Ctrl+K` or `/`: focus search bar
-  - [ ] `Escape`: close modal, close mobile sidebar
-- [ ] **CHECKPOINT: App feels polished and production-ready.**
+- [x] Loading skeletons:
+  - [x] Snippet grid: 6 skeleton cards (pulse animation)
+  - [x] Show skeletons on initial load and when switching folders
+- [x] Error handling:
+  - [x] Wrap all API calls in try/catch in hooks
+  - [x] On error: `toast.error(...)` (sonner)
+  - [x] On success: `toast.success(...)` (sonner)
+- [x] Empty states:
+  - [x] No snippets in folder: icon + message
+  - [x] No search results: icon + message
+- [x] Responsive mobile:
+  - [x] Sidebar: hidden by default on `<md` screens
+  - [x] Hamburger button in top-left to toggle sidebar
+  - [x] Sidebar slides in as overlay on mobile (with backdrop)
+  - [x] Snippet grid: single column on mobile
+- [x] Keyboard shortcuts:
+  - [x] `Ctrl+K`: focus search bar
+  - [x] `Escape`: close modal, close mobile sidebar
+- [x] **CHECKPOINT: App feels polished and production-ready.**
 
 ### Phase 8 — Deploy
-- [ ] Initialize git: `git init && git add . && git commit -m "Initial commit"`
-- [ ] Create GitHub repo → push code
-- [ ] Go to vercel.com → Import Project → select repo
-- [ ] Add environment variable: `DATABASE_URL` = Neon connection string
-- [ ] Deploy → verify live URL
-- [ ] Test all features on live URL:
-  - [ ] Create folder ✓
-  - [ ] Create snippet ✓
-  - [ ] URL auto-fetch ✓
-  - [ ] Edit snippet ✓
-  - [ ] Delete snippet ✓
-  - [ ] Delete folder (cascade) ✓
-  - [ ] Search ✓
-  - [ ] Theme toggle ✓
-  - [ ] Mobile responsive ✓
-- [ ] **CHECKPOINT: Live URL works. Submission-ready.**
+- [x] Initialize git + commit
+- [x] Push to GitHub: https://github.com/slubbles/snippet-manager
+- [x] Import to Vercel + connect Neon
+- [x] Deploy → verify live URL
+- [x] Test all features on live URL:
+  - [x] Create folder
+  - [x] Create snippet
+  - [x] URL auto-fetch
+  - [x] Edit snippet
+  - [x] Delete snippet
+  - [x] Delete folder (cascade)
+  - [x] Search
+  - [x] Theme toggle
+  - [x] Mobile responsive
+- [x] **CHECKPOINT: Live URL works. Submission-ready.**
 
-### Phase 9 — Exceed Expectations (if time allows)
+### Phase 9 — Exceed Expectations
 - [ ] Syntax highlighting: use `highlight.js` with auto-detection
-- [ ] Favicon: simple code bracket icon
+- [x] Favicon: SVG code bracket icon
 - [ ] OG meta tags: title, description, image for social sharing
-- [ ] README.md: project description, screenshot, tech stack, setup instructions, "What I'd do next" section
+- [x] README.md: project description, tech stack, setup instructions, "What I'd do next" section
 - [ ] Drag-and-drop: move snippets between folders (stretch)
 - [ ] Export: download all snippets as JSON (stretch)
 
@@ -787,15 +773,15 @@ No tokens or API keys needed in advance. Everything is configured via dashboards
 
 | Phase | Status | Notes |
 |-------|--------|-------|
-| Phase 1 — Setup | 🟡 In Progress | Roadmap done, scaffold next |
-| Phase 2 — API | ⬜ Not Started | |
-| Phase 3 — Layout + Theme | ⬜ Not Started | |
-| Phase 4 — Sidebar + Folders | ⬜ Not Started | |
-| Phase 5 — Snippet Grid + CRUD | ⬜ Not Started | |
-| Phase 6 — Search | ⬜ Not Started | |
-| Phase 7 — Polish | ⬜ Not Started | |
-| Phase 8 — Deploy | ⬜ Not Started | |
-| Phase 9 — Extras | ⬜ Not Started | |
+| Phase 1 — Setup | ✅ Done | Scaffolded, deps, schema, DB synced |
+| Phase 2 — API | ✅ Done | All 3 routes with full CRUD + validation |
+| Phase 3 — Layout + Theme | ✅ Done | ThemeProvider, dark mode, Toaster |
+| Phase 4 — Sidebar + Folders | ✅ Done | Create, rename, delete, counts |
+| Phase 5 — Snippet Grid + CRUD | ✅ Done | Cards, grid, modal, URL fetch, copy |
+| Phase 6 — Search | ✅ Done | Client-side filter, Ctrl+K shortcut |
+| Phase 7 — Polish | ✅ Done | Skeletons, toasts, empty states, mobile |
+| Phase 8 — Deploy | ✅ Done | Live on Vercel + Neon |
+| Phase 9 — Extras | 🟡 Partial | Favicon + README done, syntax highlighting skipped |
 # ROADMAP.md — Snippet Manager
 
 > **This file is the single source of truth.**

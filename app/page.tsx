@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useState, useMemo, useEffect, useRef } from 'react'
+import { Menu } from 'lucide-react'
 import { Sidebar } from '@/components/sidebar'
 import { SnippetGrid } from '@/components/snippet-grid'
 import { SnippetModal } from '@/components/snippet-modal'
@@ -58,12 +58,18 @@ export default function Home() {
     [folders]
   )
 
-  // Keyboard shortcut: Ctrl+K or / to focus search
+  const searchRef = useRef<HTMLInputElement>(null)
+
+  // Keyboard shortcuts
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setModalOpen(false)
         setMobileSidebarOpen(false)
+      }
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        searchRef.current?.focus()
       }
     }
     window.addEventListener('keydown', handler)
@@ -143,7 +149,7 @@ export default function Home() {
           >
             <Menu size={20} />
           </button>
-          <SearchBar query={searchQuery} onChange={setSearchQuery} />
+          <SearchBar ref={searchRef} query={searchQuery} onChange={setSearchQuery} />
           <ThemeToggle />
         </header>
 
