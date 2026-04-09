@@ -85,7 +85,7 @@ export default function LandingPage() {
               Stop losing the code that matters most
             </h1>
             <p className="mb-8 text-[16px] font-normal leading-[26px] text-black/60 dark:text-white/60 sm:text-[18px] sm:leading-[28px]">
-              Snip Labs lets you save, organize, and find code snippets, links, and notes in seconds — so you can stop searching and start building.
+              Snip Labs lets you save, organize, and find code snippets, links, and notes in seconds, so you can stop searching and start building.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link
@@ -120,7 +120,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <UseCaseCard icon={<FolderOpen size={22} />} title="Organize by project" description="Group your snippets into folders that mirror how you actually work. Rename or restructure anytime without losing a thing." />
-            <UseCaseCard icon={<Link2 size={22} />} title="Paste a link, get the title" description="Drop any URL and Snip Labs pulls the page title automatically — no more mysterious bookmarks or unnamed tabs." />
+            <UseCaseCard icon={<Link2 size={22} />} title="Paste a link, get the title" description="Drop any URL and Snip Labs pulls the page title automatically. No more mysterious bookmarks or unnamed tabs." />
             <UseCaseCard icon={<Search size={22} />} title="Find anything instantly" description="Real-time search across every snippet as you type. Hit Ctrl+K and you're there in milliseconds, not minutes." />
             <UseCaseCard icon={<Sun size={22} />} title="Light or dark, your call" description="Switch themes with one click. Your preference sticks between sessions so the UI always feels like yours." />
           </div>
@@ -149,10 +149,10 @@ export default function LandingPage() {
             Frequently asked questions
           </h2>
           <div className="space-y-4">
-            <FAQItem question="Is Snip Labs free to use?" answer="Yes. Snip Labs is completely free — unlimited snippets, unlimited folders, no credit card required." />
+            <FAQItem question="Is Snip Labs free to use?" answer="Yes. Snip Labs is completely free. Unlimited snippets, unlimited folders, no credit card required." />
             <FAQItem question="Do I need to install anything?" answer="No. Snip Labs runs entirely in your browser. Sign up and start saving snippets in seconds." />
             <FAQItem question="Can I organize snippets by project?" answer="Absolutely. Create as many folders as you want and nest your snippets however makes sense for your workflow." />
-            <FAQItem question="What languages does syntax highlighting support?" answer="JavaScript, TypeScript, Python, Go, Rust, Java, C#, PHP, Ruby, SQL, HTML, CSS, JSON, Bash, Markdown, YAML, and Dockerfile — 17 languages out of the box." />
+            <FAQItem question="What languages does syntax highlighting support?" answer="JavaScript, TypeScript, Python, Go, Rust, Java, C#, PHP, Ruby, SQL, HTML, CSS, JSON, Bash, Markdown, YAML, and Dockerfile. 17 languages out of the box." />
             <FAQItem question="Is my data private?" answer="Yes. Every account is fully isolated. Your snippets and folders are only visible to you, always." />
           </div>
         </div>
@@ -198,9 +198,9 @@ export default function LandingPage() {
 /* --- Subcomponents --- */
 
 const benefitCards = [
-  { icon: 'zap', title: 'Zero friction', description: 'Create a snippet in under 5 seconds. No tags, no categories, no overhead — just paste and go.' },
+  { icon: 'zap', title: 'Zero friction', description: 'Create a snippet in under 5 seconds. No tags, no categories, no overhead. Just paste and go.' },
   { icon: 'folder', title: 'Your workflow, your structure', description: 'Organize by project, language, or topic. Move things around without breaking anything.' },
-  { icon: 'search', title: "Recall, don't remember", description: 'Type a few letters and find exactly what you need. Your brain stores ideas — Snip Labs stores the code.' },
+  { icon: 'search', title: "Recall, don't remember", description: 'Type a few letters and find exactly what you need. Your brain stores ideas, Snip Labs stores the code.' },
   { icon: 'shield', title: 'Private by default', description: 'Your snippets are yours. Each account is isolated with per-user data scoping from day one.' },
   { icon: 'clock', title: 'Always synced', description: 'Access your entire library from any device. Cloud-backed, fast, and available whenever you need it.' },
   { icon: 'code', title: 'Syntax highlighting', description: '17 languages supported out of the box. Your code looks exactly like it does in your editor.' },

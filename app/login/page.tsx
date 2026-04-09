@@ -63,7 +63,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-full bg-white dark:bg-black">
-      {/* Left column — Form */}
+      {/* Left column - Form */}
       <div className="flex w-full flex-col justify-center px-6 py-6 sm:py-12 lg:w-1/2 lg:px-16 xl:px-24">
         <div className="mx-auto w-full max-w-sm space-y-8">
           {/* Logo + back link */}
@@ -187,7 +187,7 @@ export default function LoginPage() {
         </div>
       </div>
 
-      {/* Right column — Image (desktop only) */}
+      {/* Right column - Image (desktop only) */}
       <div className="relative hidden lg:block lg:w-1/2">
         <Image
           src="/images/login-bg.webp"
